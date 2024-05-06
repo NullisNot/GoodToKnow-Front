@@ -21,3 +21,13 @@ Good To Know es una aplicación de gestión de calendario diseñada para organiz
 ### Contribuir
 
 - Para contribuir, por favor crear vuestra propia rama para dev con el nombre feat-"numero del issue"
+
+- Clona el repositorio en tu máquina local usando `git clone` seguido de la URL copiada desde el botón "Code".
+
+##### Configuración de Angular
+
+Después de clonar el repositorio, sigue estos pasos para configurar Angular:
+
+1. Instala Angular globalmente ejecutando el siguiente comando: `npm install -g @angular/cli`
+
+2. Para iniciar el proyecto, ejecuta: `ng serve`
