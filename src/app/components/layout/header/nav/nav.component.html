@@ -6,11 +6,11 @@
       <button (click)="toggleOptions()">
         <i class="fas fa-bars"></i>
       </button>
-      <ul *ngIf="showOptions" class="dropdown-menu">
-        <li>Opción 1</li>
-        <li>Opción 2</li>
-        <li>Opción 3</li>
-      </ul>
+      <div *ngIf="showOptions" class="dropdown-menu">
+        <a>Opción 1</a>
+        <a>Opción 2</a>
+        <a>Opción 3</a>
+      </div>
     </nav>
   </div>
   
