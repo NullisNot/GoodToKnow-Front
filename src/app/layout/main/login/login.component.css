@@ -1,0 +1,47 @@
+.login-container {
+    position: relative;
+    width: 100%;
+    max-width: 600px;
+    margin: auto;
+    overflow: hidden;
+}
+
+.toggler {
+    display: flex;
+    width: 200%;
+    transition: transform 0.5s ease;
+}
+
+.login-form {
+    width: 50%;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.login-user {
+    background-color: #f1f1f1;
+}
+
+.login-admin {
+    background-color: #e1e1e1;
+}
+
+.toggle-buttons {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.toggle-buttons button {
+    margin: 0 10px;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+.toggle-left {
+    transform: translateX(0);
+}
+
+.toggle-right {
+    transform: translateX(-50%);
+}
