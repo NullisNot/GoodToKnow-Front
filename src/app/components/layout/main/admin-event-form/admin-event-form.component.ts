@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, Output, EventEmitter } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
@@ -11,6 +11,16 @@ import { RouterModule } from '@angular/router';
   styleUrls: ['./admin-event-form.component.css'],
 })
 export class AdminEventFormComponent {
+  dialogOpen: boolean = false;
+
+  openDialog() {
+    this.dialogOpen = true;
+  }
+
+  closeDialog() {
+    this.dialogOpen = false;
+  }
+
   'subject': string;
   'teacher': string;
   'startsAt': Date;
