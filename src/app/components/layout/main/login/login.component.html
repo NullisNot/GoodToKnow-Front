@@ -2,21 +2,21 @@
     <div class="toggler" [ngClass]="{ 'toggle-left': isUser, 'toggle-right': isAdmin }">
         <div class="login-form login-user">
             <h2>Usuario</h2>
-            <form (ngSubmit)="userLogin()">
-                <input type="text" placeholder="Code" [(ngModel)]="user.code" name="code" required>
-                <button type="submit">Iniciar sesion</button>
+            <form (ngSubmit)="userLogin()" class="entry-button">
+                <input type="text" placeholder="Inserte el codigo" [(ngModel)]="user.code" name="code" required>
+                <button type="submit" class="button-login">Iniciar sesion</button>
             </form>
         </div>
-        <div class="login-admin">
+        <div class="login-form login-admin">
             <h2>Administrador</h2>
-            <form (ngSubmit)=" adminLogin">
-                <input type="text" placeholder="Admin" [(ngModel)]="admin.adminname" name="adminAdminname" required>
-                <input type="password" placeholder="Password" [(ngModel)]="admin.password" name="adminPassword" required>
-                <button type="submit">Iniciar sesion</button>
+            <form (ngSubmit)=" adminLogin" class="entry-button">
+                <input type="text" placeholder="Administrador" [(ngModel)]="admin.adminname" name="adminAdminname" required>
+                <input type="password" placeholder="Contraseña" [(ngModel)]="admin.password" name="adminPassword" required>
+                <button type="submit" class="button-login">Iniciar sesion</button>
             </form>
         </div>
     </div>
-    <div class="toogle-buttons">
+    <div class="toggle-buttons">
         <button (click)="toggle('user')">Usuario</button>
         <button (click)="toggle('admin')">Administrador</button>
     </div>
