@@ -1,0 +1,17 @@
+<div class="NavTotal">
+    <div>
+      <h1 class="logo">goodtoknow</h1>
+    </div>
+    <nav class="dropdown-button">
+      <button (click)="toggleOptions()">
+        <i class="fas fa-bars"></i>
+      </button>
+      <div *ngIf="showOptions" class="dropdown-menu">
+        <a>Opción 1</a>
+        <a>Opción 2</a>
+        <a>Opción 3</a>
+        <a>Opción 4</a>
+      </div>
+    </nav>
+  </div>
+  
