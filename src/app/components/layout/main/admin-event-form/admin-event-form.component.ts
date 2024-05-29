@@ -1,7 +1,8 @@
 import { CommonModule } from '@angular/common';
-import { Component, Output, EventEmitter } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
+import { MockService } from '../../../../mock.service';
 
 @Component({
   selector: 'app-admin-event-form',
@@ -13,6 +14,19 @@ import { RouterModule } from '@angular/router';
 export class AdminEventFormComponent {
   dialogOpen: boolean = false;
 
+  'subject': string;
+  'teacher': string;
+  'date': string;
+  'startsAt': string;
+  'finishesAt': string;
+  'building': string;
+  'classroom': string;
+  'link': string;
+  'comments': string;
+  'notification': boolean;
+
+  constructor(private mockService: MockService) {}
+
   openDialog() {
     this.dialogOpen = true;
   }
@@ -21,27 +35,28 @@ export class AdminEventFormComponent {
     this.dialogOpen = false;
   }
 
-  'subject': string;
-  'teacher': string;
-  'startsAt': Date;
-  'finishesAt': Date;
-  'building': string;
-  'classroom': string;
-  'link': string;
-  'comments': string;
-  'notification': boolean;
-
   submitForm() {
-    console.log('Datos del formulario:', {
+    const formData = {
       subject: this.subject,
       teacher: this.teacher,
-      startsAt: this.startsAt,
-      finishesAt: this.finishesAt,
+      startsAt: this.combineDateAndTime(this.date, this.startsAt),
+      finishesAt: this.combineDateAndTime(this.date, this.finishesAt),
       building: this.building,
       classroom: this.classroom,
       link: this.link,
       comments: this.comments,
+    };
+
+    const notificationData = {
       notification: this.notification,
-    });
+    };
+
+    this.mockService.sendFormData(formData);
+    this.mockService.sendNotification(notificationData);
+  }
+
+  combineDateAndTime(date: string, time: string): string {
+    const dateTime = new Date(`${date}T${time}:00Z`);
+    return dateTime.toISOString();
   }
 }
