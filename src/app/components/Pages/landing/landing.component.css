@@ -1,0 +1,22 @@
+.app-login {
+    display: flex;
+    justify-content: center;
+    padding-top: 10%;
+    background-image: url('/assets/images/camara-photo.jpg');
+    background-size: 55% auto;
+    background-repeat: no-repeat;
+    background-position: right center;
+}
+
+
+.back {
+    background-color: black;
+    display: flex;
+    margin-top: 5%;
+    font-size: 20px;
+}
+
+.title {
+    color:aliceblue
+}
+
