@@ -1,28 +1,9 @@
 <div class="info-container">
-  <p class="title">Datos de contacto:</p>
+  <p class="title">{{title}}</p>
   <div class="data">
-    <div>
-      <p><strong>Administrador:</strong><span> Jose Aguilar Arroyo</span></p>
+    <div *ngFor="let item of data"> 
+      <p><strong>{{item.label}}:</strong><span> {{item.value}}</span></p>
     </div>
-    <div>
-      <p><strong>Teléfono:</strong><span> +34 1231456789 (ext 123)</span></p>
-    </div>
-    <div>
-      <p>
-        <strong>Correo:</strong><span> administracion&#64;goodtoknow.com</span>
-      </p>
-    </div>
-
-    <div>
-      <p>
-        <strong>Despacho:</strong><span> Cámara de comercio-Despacho 123</span>
-      </p> 
-    </div>
-  </div>
+  </div>    
 </div>
-  <p class="title">Campus:</p>
-  <div class="campus1">
-   <div>
-    <p><b>Campus centro:</b><span> Camino de Ronda, 97,18003. Granada</span></p>
-  </div>
-</div>
+  

@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
@@ -14,7 +14,8 @@ import { RouterModule } from '@angular/router';
   styleUrl: './info-container.component.css'
 })
 export class InfoContainerComponent {
-  
+  @Input () title: string | undefined;
+  @Input () data: Array<any>=[]
 }
 
   
