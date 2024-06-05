@@ -1,17 +1,23 @@
 
 .data{
-    padding: 5px;
+    padding: 25px;
     background-color: #D3D3D3;
     display: inline-block;
     width: 100%;
-    margin-bottom: 10px;
+    margin-bottom: 5px;
+    
 }
+
 .info-list-container{
     overflow-x: hidden;
     overflow-y: scroll;
     height: 350px;
-
+    margin-top:20px;  
+    margin-right: 20px;
+ 
 }
+
+
 
 
 
