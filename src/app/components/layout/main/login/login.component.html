@@ -9,7 +9,7 @@
         </div>
         <div class="login-form login-admin">
             <h2>Administrador</h2>
-            <form (ngSubmit)=" adminLogin" class="entry-button">
+            <form (ngSubmit)="adminLogin()" class="entry-button">
                 <input type="text" placeholder="Administrador" [(ngModel)]="admin.adminname" name="adminAdminname" required>
                 <input type="password" placeholder="Contraseña" [(ngModel)]="admin.password" name="adminPassword" required>
                 <button type="submit" class="button-login">Iniciar sesion</button>
