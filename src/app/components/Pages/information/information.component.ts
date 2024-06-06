@@ -1,27 +1,12 @@
 import { Component } from '@angular/core';
-import { InfoContainerComponent } from './components/Info-container/info-container.component';
-import { InfoListComponent } from './components/info-list/info-list.component';
-import { MockService } from '../../../mock.service';
-import { Information } from '../../../data/interfaces/info';
-
-
+import { CommonModule } from '@angular/common';
+import { InfoSectionComponent } from '../../layout/main/info-section/info-section.component';
 
 @Component({
-    selector: 'app-landing',
-    standalone: true,
-    templateUrl: './information.component.html',
-    styleUrl: './information.component.css',
-    imports: [
-        InfoContainerComponent,
-        InfoListComponent
-    ] 
+  selector: 'app-information',
+  standalone: true,
+  imports: [InfoSectionComponent, CommonModule],
+  templateUrl: './information.component.html',
+  styleUrl: './information.component.css',
 })
-
-export class InformationComponent {
-    public information: Information;
-
-    constructor(private mockService: MockService) { 
-        this.information = this.mockService.getInformation()
-            
-    }
-}
+export class informationComponent {}

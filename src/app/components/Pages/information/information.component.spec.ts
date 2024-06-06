@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { InformationComponent } from './information.component';
+import { AdminPrincipalCalendarComponent } from './information.component';
 
-describe('InformationComponent', () => {
-  let component: InformationComponent;
-  let fixture: ComponentFixture<InformationComponent>;
+describe('AdminPrincipalCalendarComponent', () => {
+  let component: AdminPrincipalCalendarComponent;
+  let fixture: ComponentFixture<AdminPrincipalCalendarComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [InformationComponent]
+      imports: [AdminPrincipalCalendarComponent]
     })
     .compileComponents();
     
-    fixture = TestBed.createComponent(InformationComponent);
+    fixture = TestBed.createComponent(AdminPrincipalCalendarComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
