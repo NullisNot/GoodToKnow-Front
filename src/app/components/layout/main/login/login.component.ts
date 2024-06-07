@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -27,6 +28,8 @@ export class LoginComponent {
     password:''
   };
 
+  constructor(private router: Router){}
+
   toggle(type :string) {
     if(type === 'user'){
       this.isUser = true;
@@ -42,6 +45,11 @@ export class LoginComponent {
   }
 
   adminLogin(){
+    if(this.admin.adminname === 'Administrador' && this.admin.password === 'Passwordtry'){
+      this.router.navigate(['/admin-calendar'])
+    } else {
+      alert('Nombre o contraseña incorrectos');
+    }
 
   }
 
