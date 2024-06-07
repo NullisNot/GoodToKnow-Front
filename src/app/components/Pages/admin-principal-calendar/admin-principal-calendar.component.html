@@ -1,12 +1,2 @@
-<div class="calendar-container">
-  <full-calendar [options]="calendarOptions"></full-calendar>
-</div>
+<app-calendar></app-calendar>
 <app-admin-event-form></app-admin-event-form>
-@for (event of events; track event) {
-<h1>{{event.subject}}</h1>
-<h3>Profesor: {{event.teacher}}</h3>
-<h3>Edificio: {{event.classroom}}, {{event.building}}</h3>
-<h3>Horario: {{event.start}}/{{event.finish}}</h3>
-<h3>Comentarios: {{event.comments}}</h3>
-<h3>Enlaces: {{event.link}}</h3>
-}
