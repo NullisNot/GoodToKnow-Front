@@ -29,15 +29,20 @@ button i.fas {
     display: flex;
     flex-direction: column;
     align-items: flex-end;
-    width: 400px;
+    width: 300px;
     margin-top: 30px;
     padding-right: 30px;
 }
   
 .dropdown-menu a {
-    padding: 50px;
+    padding-top: 25px;
+    padding-bottom: 25px;
     padding-right: 20px;
     padding-left: 20px;
+    text-decoration: none;
+    color: inherit;
+    font-weight: normal;
+    font-style: normal;
 }
   
 button {
@@ -48,4 +53,20 @@ button {
     border: none;
     display: flex;
     justify-content: flex-end;
+}
+
+.exit {
+    position: absolute;
+    right: 0;
+    background: #000000;
+    color: #FFFFFF;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    width: 300px;
+    margin-top: 30px;
+    padding-right: 30px;
 }
