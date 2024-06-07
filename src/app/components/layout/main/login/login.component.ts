@@ -41,6 +41,11 @@ export class LoginComponent {
   }
 
   userLogin(){
+    if(this.user.code === 'Programacion.2024'){
+      this.router.navigate(['/calendar'])
+    } else {
+      alert('Codigo incorrecto')
+    }
 
   }
 
