@@ -3,13 +3,14 @@ import { AdminEventFormComponent } from '../../layout/main/admin-event-form/admi
 import { CommonModule } from '@angular/common';
 import { EventsService } from '../../../services/events.service';
 import { CalendarComponent } from '../../layout/main/calendar/calendar.component';
+import { FooterComponent } from "../../layout/footer/footer.component";
 
 @Component({
-  selector: 'app-admin-principal-calendar',
-  standalone: true,
-  templateUrl: './admin-principal-calendar.component.html',
-  styleUrl: './admin-principal-calendar.component.css',
-  imports: [AdminEventFormComponent, CommonModule, CalendarComponent],
-  providers: [EventsService],
+    selector: 'app-admin-principal-calendar',
+    standalone: true,
+    templateUrl: './admin-principal-calendar.component.html',
+    styleUrl: './admin-principal-calendar.component.css',
+    providers: [EventsService],
+    imports: [AdminEventFormComponent, CommonModule, CalendarComponent, FooterComponent]
 })
 export class AdminPrincipalCalendarComponent {}
