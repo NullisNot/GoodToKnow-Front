@@ -1,12 +1,11 @@
 import { Component } from '@angular/core';
+import { NavComponent } from '../../layout/header/nav/nav.component';
 
 @Component({
   selector: 'app-notification',
   standalone: true,
-  imports: [],
+  imports: [NavComponent],
   templateUrl: './notification.component.html',
-  styleUrl: './notification.component.css'
+  styleUrl: './notification.component.css',
 })
-export class NotificationComponent {
-
-}
+export class NotificationComponent {}

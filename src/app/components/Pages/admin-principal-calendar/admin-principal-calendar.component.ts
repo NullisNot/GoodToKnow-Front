@@ -9,6 +9,7 @@ import esLocale from '@fullcalendar/core/locales/es';
 import { FullCalendarModule } from '@fullcalendar/angular';
 import { HttpClientModule } from '@angular/common/http';
 import { Evento } from './evento';
+import { NavComponent } from '../../layout/header/nav/nav.component';
 
 @Component({
   selector: 'app-admin-principal-calendar',
@@ -20,6 +21,7 @@ import { Evento } from './evento';
     CommonModule,
     FullCalendarModule,
     HttpClientModule,
+    NavComponent,
   ],
   providers: [EventsService],
 })
