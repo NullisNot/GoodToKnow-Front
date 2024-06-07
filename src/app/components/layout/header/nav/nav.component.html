@@ -1,16 +1,21 @@
 <div class="NavTotal">
     <div>
-      <h1 class="logo">goodtoknow</h1>
+      <h1 class="logo">goodtoknøw</h1>
     </div>
     <nav class="dropdown-button">
       <button (click)="toggleOptions()">
-        <i class="fas fa-bars"></i>
+        <i>+</i>
       </button>
       <div *ngIf="showOptions" class="dropdown-menu">
-        <a>Opción 1</a>
-        <a>Opción 2</a>
-        <a>Opción 3</a>
-        <a>Opción 4</a>
+        <ng-container>
+          <a routerLink="/admin-calendar">Admin Calendario</a>
+          <a routerLink="/admin-notification">Admin Notificación</a>
+          <a routerLink="/admin-info">Admin Información</a>
+          <a routerLink="/calendar">Calendario</a>
+          <a routerLink="/info">Información</a>
+          <a routerLink="/notification">Notificación</a>
+        </ng-container>
+        <a routerLink="/">Cerrar sesión</a>
       </div>
     </nav>
   </div>
