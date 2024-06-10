@@ -17,6 +17,9 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin: 20px;
+  background-color: #ffffff;
+  border-radius: 20px;
 }
 
 .events {
@@ -37,10 +40,13 @@
 
 .rightSide {
   padding-left: 50px;
-  max-height: 550px;
+  max-height: 655px;
   overflow-y: auto;
   width: 100%;
   padding-right: 10px;
+  background-color: #d3d3d3;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
 }
 
 .rightSide::-webkit-scrollbar {
@@ -66,8 +72,6 @@
   border: solid black 1px;
   padding-top: 1px;
   padding-bottom: 1px;
-  padding-left: 50px;
-  padding-right: 50px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -80,4 +84,10 @@
   flex-direction: row;
   align-items: center;
   justify-content: flex-start;
+}
+
+.subjectTitle {
+  border-bottom: solid #000000 1px;
+  padding-bottom: 2px;
+  width: 500px;
 }
