@@ -1,9 +1,51 @@
 .calendar-container {
-  width: 45vw;
+  width: 45%;
   padding: 10px;
   border: 1px solid rgb(94, 94, 94);
   border-radius: 10px;
   background-color: rgb(248, 252, 252);
   -webkit-box-shadow: 5px 6px 15px 1px #000000;
   box-shadow: 5px 6px 15px 1px #000000;
+}
+
+.calendar-events {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin-top: 150px;
+}
+
+.Event {
+  background-color: #D3D3D3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.events {
+  background-color: #D3D3D3;
+  width: 45%;
+}
+
+.title {
+  font-weight: bold;
+  margin-right: 10px;
+  margin-bottom: -10px;
+}
+
+.answer {
+  font-weight: normal;
+  font-size: 15px;
+  border: solid black 1px;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-left: 100px;
+  padding-right: 100px;
+  display: flex;
+  align-items: center;
+}
+
+.EventPart {
+  display: flex;
+  flex-direction: column;
 }
