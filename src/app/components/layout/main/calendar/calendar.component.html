@@ -4,9 +4,14 @@
   </div>
   <div class="events">
     <div class="leftSide">
-      <div *ngFor="let eventGroup of events">{{ eventGroup.startDate }}</div>
+      <div *ngFor="let eventGroup of events">
+        <h3>{{ eventGroup.startDate }}</h3>
+      </div>
     </div>
     <div class="rightSide">
+      <div>
+        <h2>{{ noEventsMessage }}</h2>
+      </div>
       <div *ngFor="let eventGroup of events">
         <div *ngFor="let event of eventGroup.events">
           <div class="Event">
@@ -36,7 +41,6 @@
           </div>
         </div>
       </div>
-      <div class="NoEvent" *ngIf="noEventsMessage">{{ noEventsMessage }}</div>
     </div>
   </div>
 </div>
