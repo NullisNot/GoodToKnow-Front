@@ -19,7 +19,7 @@ import { DatePipe } from '@angular/common';
   providers: [EventsService, DatePipe],
 })
 export class CalendarComponent {
-  events: EventStructure[] = [];
+  events: { startDate: string; events: EventStructure[] }[] = [];
   selectedDate: string = new Date().toISOString().split('T')[0];
   noEventsMessage: string = '';
 
@@ -27,7 +27,6 @@ export class CalendarComponent {
     private eventsService: EventsService,
     private datePipe: DatePipe
   ) {
-    // Llama a getData con la fecha de hoy al inicializar el componente
     this.getData({ dateStr: this.selectedDate });
   }
 
@@ -47,14 +46,26 @@ export class CalendarComponent {
   getData(arg: any) {
     this.eventsService.getEventByDay(arg.dateStr).subscribe({
       next: (data) => {
-        this.events = data;
-        this.noEventsMessage =
-          this.events.length === 0 ? 'No hay eventos registrados' : '';
-        this.events.map((evento) => {
+        const eventsByDate: { [date: string]: EventStructure[] } = {};
+
+        data.forEach((evento: EventStructure) => {
           evento.start = this.formatDate(evento.startsAt);
           evento.finish = this.formatDate(evento.finishesAt);
-          evento.startDate = this.formatDateTitle(evento.startsAt);
+          const startDate = this.formatDateTitle(evento.startsAt);
+
+          if (!eventsByDate[startDate]) {
+            eventsByDate[startDate] = [];
+          }
+          eventsByDate[startDate].push(evento);
         });
+
+        this.events = Object.keys(eventsByDate).map((date) => ({
+          startDate: date,
+          events: eventsByDate[date],
+        }));
+
+        this.noEventsMessage =
+          this.events.length === 0 ? 'No hay eventos registrados' : '';
       },
       error: (error) => {
         console.error('Error', error);
