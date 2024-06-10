@@ -8,6 +8,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { EventsService } from '../../../../services/events.service';
 import { EventStructure } from './eventStructure';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-calendar',
@@ -15,12 +16,19 @@ import { EventStructure } from './eventStructure';
   imports: [FullCalendarModule, CommonModule, HttpClientModule],
   templateUrl: './calendar.component.html',
   styleUrl: './calendar.component.css',
-  providers: [EventsService],
+  providers: [EventsService, DatePipe],
 })
 export class CalendarComponent {
-  events: EventStructure[] = [];
+  events: { startDate: string; events: EventStructure[] }[] = [];
+  selectedDate: string = new Date().toISOString().split('T')[0];
+  noEventsMessage: string = '';
 
-  constructor(private eventsService: EventsService) {}
+  constructor(
+    private eventsService: EventsService,
+    private datePipe: DatePipe
+  ) {
+    this.getData({ dateStr: this.selectedDate });
+  }
 
   handleDateClick(arg: any) {
     this.getData(arg);
@@ -38,14 +46,30 @@ export class CalendarComponent {
   getData(arg: any) {
     this.eventsService.getEventByDay(arg.dateStr).subscribe({
       next: (data) => {
-        this.events = data;
-        this.events.map((evento) => {
+        const eventsByDate: { [date: string]: EventStructure[] } = {};
+
+        data.forEach((evento: EventStructure) => {
           evento.start = this.formatDate(evento.startsAt);
           evento.finish = this.formatDate(evento.finishesAt);
+          const startDate = this.formatDateTitle(evento.startsAt);
+
+          if (!eventsByDate[startDate]) {
+            eventsByDate[startDate] = [];
+          }
+          eventsByDate[startDate].push(evento);
         });
+
+        this.events = Object.keys(eventsByDate).map((date) => ({
+          startDate: date,
+          events: eventsByDate[date],
+        }));
+
+        this.noEventsMessage =
+          this.events.length === 0 ? 'No hay eventos registrados' : '';
       },
       error: (error) => {
         console.error('Error', error);
+        this.noEventsMessage = 'Error al cargar eventos';
       },
     });
   }
@@ -57,5 +81,11 @@ export class CalendarComponent {
       .getMinutes()
       .toString()
       .padStart(2, '0')}`;
+  }
+
+  formatDateTitle(date: Date): string {
+    const options = { day: 'numeric', month: 'long' };
+    const locale = 'es-ES';
+    return this.datePipe.transform(new Date(date), 'dd MMMM', 'es-ES') || '';
   }
 }

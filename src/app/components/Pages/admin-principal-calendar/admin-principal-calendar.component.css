@@ -1,9 +1,13 @@
-.calendar-container {
-  width: 45vw;
-  padding: 10px;
-  border: 1px solid rgb(94, 94, 94);
-  border-radius: 10px;
-  background-color: rgb(248, 252, 252);
-  -webkit-box-shadow: 5px 6px 15px 1px #000000;
-  box-shadow: 5px 6px 15px 1px #000000;
+.buttons {
+  border: solid #000000 1px;
+    padding: 5px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    width: 200px;
+    border-radius: 10px;
+    margin-top: 10px;
+    position: absolute;
+    right: 0;
+    margin-right: 50px;
 }

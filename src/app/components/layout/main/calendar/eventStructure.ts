@@ -10,4 +10,5 @@ export interface EventStructure {
   teacher: string;
   start?: string;
   finish?: string;
+  startDate: string;
 }
