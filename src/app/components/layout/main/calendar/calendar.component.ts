@@ -20,11 +20,16 @@ import { DatePipe } from '@angular/common';
 })
 export class CalendarComponent {
   events: EventStructure[] = [];
+  selectedDate: string = new Date().toISOString().split('T')[0];
+  noEventsMessage: string = '';
 
   constructor(
     private eventsService: EventsService,
     private datePipe: DatePipe
-  ) {}
+  ) {
+    // Llama a getData con la fecha de hoy al inicializar el componente
+    this.getData({ dateStr: this.selectedDate });
+  }
 
   handleDateClick(arg: any) {
     this.getData(arg);
@@ -43,6 +48,8 @@ export class CalendarComponent {
     this.eventsService.getEventByDay(arg.dateStr).subscribe({
       next: (data) => {
         this.events = data;
+        this.noEventsMessage =
+          this.events.length === 0 ? 'No hay eventos registrados' : '';
         this.events.map((evento) => {
           evento.start = this.formatDate(evento.startsAt);
           evento.finish = this.formatDate(evento.finishesAt);
@@ -51,6 +58,7 @@ export class CalendarComponent {
       },
       error: (error) => {
         console.error('Error', error);
+        this.noEventsMessage = 'Error al cargar eventos';
       },
     });
   }

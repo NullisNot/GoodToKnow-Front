@@ -3,19 +3,19 @@
     <full-calendar [options]="calendarOptions"></full-calendar>
   </div>
   <div class="events">
-    <div class="NoEvent" *ngIf="events.length === 0">
-      <h1>No hay clases</h1>
-    </div>
-    <div class="Event" *ngFor="let event of events">
-      {{event.startDate}}
-    <div class="EventRight">
-      <h2>{{ event.subject }}</h2>
-      <div class="EventPart"><h3 class="title">Profesor:</h3><h3 class="answer">{{ event.teacher }}</h3></div>
-      <div class="EventPart"><h3 class="title">Lugar:</h3><h3 class="answer">{{ event.building }}, {{ event.classroom }}</h3></div>
-      <div class="EventPart"><h3 class="title">Horario:</h3><h3 class="answer">{{ event.start }} - {{ event.finish }}</h3></div>
-      <div class="EventPart"><h3 class="title">Comentarios:</h3><h3 class="answer">{{ event.comments }}</h3></div>
-      <div class="EventPart"><h3 class="title">Enlaces:</h3><h3 class="answer">{{ event.link }}</h3></div>
-    </div>
+    <div class="leftSide" *ngFor="let event of events">{{event.startDate}}</div>
+    <div class="rightSide">
+      <div class="NoEvent" *ngIf="noEventsMessage">{{ noEventsMessage }}</div>
+      <div class="Event" *ngFor="let event of events">
+        <div class="EventRight">
+          <h2>{{ event.subject }}</h2>
+          <div class="EventPart"><h3 class="title">Profesor:</h3><h3 class="answer">{{ event.teacher }}</h3></div>
+          <div class="EventPart"><h3 class="title">Lugar:</h3><h3 class="answer">{{ event.building }}, {{ event.classroom }}</h3></div>
+          <div class="EventPart"><h3 class="title">Horario:</h3><h3 class="answer">{{ event.start }} - {{ event.finish }}</h3></div>
+          <div class="EventPart"><h3 class="title">Comentarios:</h3><h3 class="answer">{{ event.comments }}</h3></div>
+          <div class="EventPart"><h3 class="title">Enlaces:</h3><h3 class="answer">{{ event.link }}</h3></div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
