@@ -8,6 +8,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { EventsService } from '../../../../services/events.service';
 import { EventStructure } from './eventStructure';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-calendar',
@@ -15,12 +16,15 @@ import { EventStructure } from './eventStructure';
   imports: [FullCalendarModule, CommonModule, HttpClientModule],
   templateUrl: './calendar.component.html',
   styleUrl: './calendar.component.css',
-  providers: [EventsService],
+  providers: [EventsService, DatePipe],
 })
 export class CalendarComponent {
   events: EventStructure[] = [];
 
-  constructor(private eventsService: EventsService) {}
+  constructor(
+    private eventsService: EventsService,
+    private datePipe: DatePipe
+  ) {}
 
   handleDateClick(arg: any) {
     this.getData(arg);
@@ -42,6 +46,7 @@ export class CalendarComponent {
         this.events.map((evento) => {
           evento.start = this.formatDate(evento.startsAt);
           evento.finish = this.formatDate(evento.finishesAt);
+          evento.startDate = this.formatDateTitle(evento.startsAt);
         });
       },
       error: (error) => {
@@ -57,5 +62,11 @@ export class CalendarComponent {
       .getMinutes()
       .toString()
       .padStart(2, '0')}`;
+  }
+
+  formatDateTitle(date: Date): string {
+    const options = { day: 'numeric', month: 'long' };
+    const locale = 'es-ES';
+    return this.datePipe.transform(new Date(date), 'dd MMMM', 'es-ES') || '';
   }
 }
