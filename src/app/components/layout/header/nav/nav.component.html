@@ -4,18 +4,32 @@
     </div>
     <nav class="dropdown-button">
       <button (click)="toggleOptions()">
-        <i>+</i>
+        <i class="fas fa-bars"></i>
       </button>
       <div *ngIf="showOptions" class="dropdown-menu">
         <ng-container>
-          <a routerLink="/admin-calendar">Admin Calendario</a>
-          <a routerLink="/admin-notification">Admin Notificación</a>
-          <a routerLink="/admin-info">Admin Información</a>
-          <a routerLink="/calendar">Calendario</a>
-          <a routerLink="/info">Información</a>
-          <a routerLink="/notification">Notificación</a>
+          <a routerLink="/admin-calendar">
+            Admin Calendario <i class="fas fa-calendar-alt"></i>
+          </a>
+          <a routerLink="/admin-notification">
+            Admin Notificación <i class="fas fa-bell"></i>
+          </a>
+          <a routerLink="/admin-info">
+            Admin Información <i class="fas fa-info-circle"></i>
+          </a>
+          <a routerLink="/calendar">
+            Calendario <i class="fas fa-calendar-alt"></i>
+          </a>
+          <a routerLink="/info">
+            Información <i class="fas fa-info-circle"></i>
+          </a>
+          <a routerLink="/notification">
+            Notificación <i class="fas fa-bell"></i>
+          </a>
         </ng-container>
-        <a routerLink="/">Cerrar sesión</a>
+        <a routerLink="/">
+          <i class="fas fa-sign-out-alt"></i> Cerrar sesión 
+        </a>
       </div>
     </nav>
   </div>
