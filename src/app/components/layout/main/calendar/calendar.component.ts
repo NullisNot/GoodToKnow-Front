@@ -84,8 +84,6 @@ export class CalendarComponent {
   }
 
   formatDateTitle(date: Date): string {
-    const options = { day: 'numeric', month: 'long' };
-    const locale = 'es-ES';
     return this.datePipe.transform(new Date(date), 'dd MM', 'es-ES') || '';
   }
 }
