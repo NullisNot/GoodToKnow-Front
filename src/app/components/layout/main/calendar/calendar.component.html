@@ -3,10 +3,8 @@
     <full-calendar [options]="calendarOptions"></full-calendar>
   </div>
   <div class="events">
-    <div class="leftSide">
-      <div *ngFor="let eventGroup of events">
+    <div class="leftSide" *ngFor="let eventGroup of events">
         <h3>{{ eventGroup.startDate }}</h3>
-      </div>
     </div>
     <div class="rightSide">
       <div>
