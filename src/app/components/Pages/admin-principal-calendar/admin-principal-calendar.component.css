@@ -1,0 +1,13 @@
+.buttons {
+  border: solid #000000 1px;
+    padding: 5px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    width: 200px;
+    border-radius: 10px;
+    margin-top: 10px;
+    position: absolute;
+    right: 0;
+    margin-right: 50px;
+}
