@@ -11,21 +11,18 @@ import { EventStructure } from './eventStructure';
 import { AdminEventEditComponent } from '../admin-edit-event-form/admin-edit-event-form.component';
 import { DatePipe } from '@angular/common';
 
-
 @Component({
   selector: 'app-calendar',
   standalone: true,
   templateUrl: './calendar.component.html',
   styleUrl: './calendar.component.css',
-  providers: [EventsService],
+  providers: [EventsService, DatePipe],
   imports: [
     FullCalendarModule,
     CommonModule,
     HttpClientModule,
     AdminEventEditComponent,
   ],
-  providers: [EventsService, DatePipe],
-
 })
 export class CalendarComponent {
   events: { startDate: string; events: EventStructure[] }[] = [];
