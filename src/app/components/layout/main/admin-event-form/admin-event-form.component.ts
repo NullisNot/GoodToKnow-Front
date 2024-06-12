@@ -1,8 +1,9 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, NgForm } from '@angular/forms';
 import { RouterModule } from '@angular/router';
-import { MockService } from '../../../../mock.service';
+import { Event, EventIn } from '../../../../services/types';
+import { EventsService } from '../../../../services/events.service';
 
 @Component({
   selector: 'app-admin-event-form',
@@ -14,18 +15,64 @@ import { MockService } from '../../../../mock.service';
 export class AdminEventFormComponent {
   dialogOpen: boolean = false;
 
-  'subject': string;
-  'teacher': string;
-  'date': string;
-  'startsAt': string;
-  'finishesAt': string;
-  'building': string;
-  'classroom': string;
-  'link': string;
-  'comments': string;
+  event: Event = {
+    building: '',
+    classroom: '',
+    comments: '',
+    startsAt: '',
+    finishesAt: '',
+    link: '',
+    subject: '',
+    teacher: '',
+    date: '',
+  };
+
+  eventIn: EventIn = {
+    building: '',
+    classroom: '',
+    comments: '',
+    startsAt: '',
+    finishesAt: '',
+    link: '',
+    subject: '',
+    teacher: '',
+  };
+
   'notification': boolean;
 
-  constructor(private mockService: MockService) {}
+  constructor(private eventService: EventsService) {}
+
+  createEvent(eventForm: NgForm) {
+    this.eventIn = {
+      building: this.event.building,
+      classroom: this.event.classroom,
+      comments: this.event.comments,
+      startsAt: this.combineDateAndTime(this.event.date, this.event.startsAt),
+      finishesAt: this.combineDateAndTime(
+        this.event.date,
+        this.event.finishesAt
+      ),
+      link: this.event.link,
+      subject: this.event.subject,
+      teacher: this.event.teacher,
+    };
+
+    if (eventForm.invalid) {
+      alert('Por favor, rellena todos los campos');
+      return;
+    }
+    this.eventService.createEvent(this.eventIn).subscribe({
+      next: (data) => {
+        alert('Evento Creado');
+        eventForm.resetForm();
+        this.closeDialog();
+      },
+      error: (error) => {
+        console.error('Error creating event', error);
+      },
+    });
+    this.closeDialog();
+  }
 
   openDialog() {
     this.dialogOpen = true;
@@ -33,26 +80,6 @@ export class AdminEventFormComponent {
 
   closeDialog() {
     this.dialogOpen = false;
-  }
-
-  submitForm() {
-    const formData = {
-      subject: this.subject,
-      teacher: this.teacher,
-      startsAt: this.combineDateAndTime(this.date, this.startsAt),
-      finishesAt: this.combineDateAndTime(this.date, this.finishesAt),
-      building: this.building,
-      classroom: this.classroom,
-      link: this.link,
-      comments: this.comments,
-    };
-
-    const notificationData = {
-      notification: this.notification,
-    };
-
-    this.mockService.sendFormData(formData);
-    this.mockService.sendNotification(notificationData);
   }
 
   combineDateAndTime(date: string, time: string): string {

@@ -1,9 +1,93 @@
 .calendar-container {
-  width: 45vw;
+  width: 45%;
   padding: 10px;
-  border: 1px solid rgb(94, 94, 94);
+  border: 1px solid #000000;
   border-radius: 10px;
-  background-color: rgb(248, 252, 252);
-  -webkit-box-shadow: 5px 6px 15px 1px #000000;
-  box-shadow: 5px 6px 15px 1px #000000;
+  background-color: #FFFFFF;
+}
+
+.calendar-events {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin-top: 110px;
+}
+
+.Event {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 20px;
+  background-color: #ffffff;
+  border-radius: 20px;
+}
+
+.events {
+  background-color: #FFFFFF;
+  width: 45%;
+  display: flex;
+  flex-direction: row;
+  border: 1px solid #000000;
+  border-radius: 10px;
+}
+
+.leftSide {
+  border-right: solid black 1px;
+  padding: 20px;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.rightSide {
+  padding-left: 50px;
+  max-height: 655px;
+  overflow-y: auto;
+  width: 100%;
+  padding-right: 10px;
+  background-color: #d3d3d3;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+.rightSide::-webkit-scrollbar {
+  width: 8px;
+}
+
+.rightSide::-webkit-scrollbar-thumb {
+  background-color: #888;
+  border-radius: 10px;
+}
+
+.rightSide::-webkit-scrollbar-thumb:hover {
+  background-color: #555;
+}
+.title {
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+.answer {
+  font-weight: normal;
+  font-size: 15px;
+  border: solid black 1px;
+  padding-top: 1px;
+  padding-bottom: 1px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 18px; 
+}
+
+.EventPart {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.subjectTitle {
+  border-bottom: solid #000000 1px;
+  padding-bottom: 2px;
+  width: 500px;
 }
