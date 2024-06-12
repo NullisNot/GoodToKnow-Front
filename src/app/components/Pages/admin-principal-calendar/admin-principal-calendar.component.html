@@ -1,4 +1,5 @@
 <app-nav></app-nav>
-<app-calendar></app-calendar>
+<app-calendar (eventSelected)="onEventSelected($event)"></app-calendar>
 <app-admin-event-form></app-admin-event-form>
+<app-admin-edit-event-form *ngIf="selectedEventDay" [eventDay]="selectedEventDay"></app-admin-edit-event-form>
 <notnull-footer />

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output, output } from '@angular/core';
 import { FullCalendarModule } from '@fullcalendar/angular';
 import { CalendarOptions } from '@fullcalendar/core';
 import dayGridPlugin from '@fullcalendar/daygrid';
@@ -20,10 +20,13 @@ import { EventStructure } from './eventStructure';
 export class CalendarComponent {
   events: EventStructure[] = [];
 
+  @Output() eventSelected = new EventEmitter<string>();
+
   constructor(private eventsService: EventsService) {}
 
   handleDateClick(arg: any) {
     this.getData(arg);
+    this.eventSelected.emit(arg.dateStr);
   }
 
   calendarOptions: CalendarOptions = {

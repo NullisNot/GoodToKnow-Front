@@ -20,4 +20,8 @@ export class EventsService {
   createEvent(eventIn: EventIn): Observable<any> {
     return this.http.post(this.apiUrl, eventIn);
   }
+
+  updateEvent(id: string, eventIn: EventIn): Observable<any> {
+    return this.http.put(`${this.apiUrl}/${id}`, eventIn)
+  }
 }
