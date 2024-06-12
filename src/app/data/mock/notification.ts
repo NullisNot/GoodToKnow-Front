@@ -9,7 +9,8 @@ export const notifications:Array<Notification> = [
         finishesAt: undefined,
         teacher: undefined,
         link: undefined,
-        comments: undefined
+        comments: undefined,
+        type: "notification"
 
     },
     {
@@ -21,7 +22,8 @@ export const notifications:Array<Notification> = [
         finishesAt: undefined,
         teacher: undefined,
         link: undefined,
-        comments: undefined
+        comments: undefined,
+        type: "reminder"
 
     }
 

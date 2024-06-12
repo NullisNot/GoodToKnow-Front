@@ -8,4 +8,5 @@ export interface Notification {
     finishesAt: string | undefined;
     link: string | undefined;
     comments: string | undefined;
+    type: string;
 }

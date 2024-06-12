@@ -1,22 +1,25 @@
+<div class="notifications">
+    <div class="title">
+        <p><strong>Últimas notificaciones: </strong></p>
+    </div>
 
-    <div>
-        
-        <div *ngFor="let notification of notificationsShow">
+    <div *ngFor="let notification of notificationsShow">
             
-            <app-notification-item 
+        <app-notification-item 
                 [title]="notification.title"
                 [subject]="notification.subject"
                 [teacher]="notification.teacher"
                 [place]="notification.place" 
                 [time]="notification.time"
                 [link]="notification.link"
-                [comments]="notification.comments">
+                [comments]="notification.comments"
+                [type]="notification.type">
                 
         
         </app-notification-item>
 
-        </div>
+    </div>
         
     
 
-    </div>
+</div>

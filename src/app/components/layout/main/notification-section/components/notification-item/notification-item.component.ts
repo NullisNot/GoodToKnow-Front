@@ -21,6 +21,7 @@ export class NotificationItemComponent {
   @Input () time: string | undefined;
   @Input () link: string | undefined;
   @Input () comments: string | undefined;
+  @Input () type: string = "notification";
 }
 
 
