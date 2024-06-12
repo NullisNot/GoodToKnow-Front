@@ -11,15 +11,23 @@
   flex-direction: row;
   justify-content: space-around;
   margin-top: 110px;
+  max-height: 550px;
+  min-height: 550px;
 }
 
-.Event {
+.EventRight {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: 20px;
   background-color: #ffffff;
   border-radius: 20px;
+  width: 420px;
+  min-height: 400px;
+  flex-direction: column;
+  padding: 10px;
+  margin-top: 30px;
+  padding-left: 30px;
+  padding-right: 30px;
+  height: auto;
+  overflow: hidden; 
 }
 
 .events {
@@ -33,20 +41,22 @@
 
 .leftSide {
   border-right: solid black 1px;
-  padding: 20px;
-  font-size: 18px;
+  padding: 5px;
+  font-size: 25px;
   font-weight: bold;
+  text-align: center;
 }
 
 .rightSide {
-  padding-left: 50px;
   max-height: 655px;
   overflow-y: auto;
   width: 100%;
-  padding-right: 10px;
   background-color: #d3d3d3;
   border-top-right-radius: 10px;
   border-bottom-right-radius: 10px;
+  display: flex;
+  justify-content: center;
+  padding-top: 15px;
 }
 
 .rightSide::-webkit-scrollbar {
@@ -76,7 +86,9 @@
   align-items: center;
   justify-content: center;
   width: 100%;
-  min-height: 18px; 
+  min-height: 20px;
+  height: auto;
+  overflow: hidden; 
 }
 
 .EventPart {
@@ -84,10 +96,29 @@
   flex-direction: row;
   align-items: center;
   justify-content: flex-start;
+  padding-bottom: 5px;
 }
 
 .subjectTitle {
   border-bottom: solid #000000 1px;
   padding-bottom: 2px;
-  width: 500px;
+  width: 330px;
+}
+
+.StartDate {
+  font-size: 20px;
+}
+
+.answerComments {
+  font-weight: normal;
+  font-size: 15px;
+  border: solid black 1px;
+  padding-top: 1px;
+  padding-bottom: 1px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 20px;
+  
 }
