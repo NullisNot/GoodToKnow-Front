@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output, output } from '@angular/core';
+import { Component } from '@angular/core';
 import { FullCalendarModule } from '@fullcalendar/angular';
 import { CalendarOptions } from '@fullcalendar/core';
 import dayGridPlugin from '@fullcalendar/daygrid';
@@ -8,25 +8,28 @@ import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { EventsService } from '../../../../services/events.service';
 import { EventStructure } from './eventStructure';
+import { AdminEventEditComponent } from '../admin-edit-event-form/admin-edit-event-form.component';
 
 @Component({
   selector: 'app-calendar',
   standalone: true,
-  imports: [FullCalendarModule, CommonModule, HttpClientModule],
   templateUrl: './calendar.component.html',
   styleUrl: './calendar.component.css',
   providers: [EventsService],
+  imports: [
+    FullCalendarModule,
+    CommonModule,
+    HttpClientModule,
+    AdminEventEditComponent,
+  ],
 })
 export class CalendarComponent {
   events: EventStructure[] = [];
-
-  @Output() eventSelected = new EventEmitter<string>();
 
   constructor(private eventsService: EventsService) {}
 
   handleDateClick(arg: any) {
     this.getData(arg);
-    this.eventSelected.emit(arg.dateStr);
   }
 
   calendarOptions: CalendarOptions = {

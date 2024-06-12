@@ -1,9 +1,10 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
 import { RouterModule } from '@angular/router';
-import { Event, EventIn } from '../../../../services/types';
+import { EventIn } from '../../../../services/types';
 import { EventsService } from '../../../../services/events.service';
+import { EventStructure } from '../calendar/eventStructure';
 
 @Component({
   selector: 'app-admin-edit-event-form',
@@ -12,20 +13,23 @@ import { EventsService } from '../../../../services/events.service';
   templateUrl: './admin-edit-event-form.component.html',
   styleUrls: ['./admin-edit-event-form.component.css'],
 })
-export class AdminEventEditComponent implements OnInit {
-  @Input() geteventDay?: string;
-  dialogOpen: boolean = false;
-  event: Event = {
+export class AdminEventEditComponent {
+  @Input() eventToEdit: EventStructure = {
     building: '',
     classroom: '',
     comments: '',
-    startsAt: '',
-    finishesAt: '',
+    startsAt: new Date(),
+    finishesAt: new Date(),
     link: '',
     subject: '',
     teacher: '',
-    date: '',
+    id: 0,
+    start: '',
+    finish: '',
   };
+
+  dialogOpen: boolean = false;
+
   eventIn: EventIn = {
     building: '',
     classroom: '',
@@ -40,39 +44,17 @@ export class AdminEventEditComponent implements OnInit {
 
   constructor(private eventService: EventsService) {}
 
-  ngOnInit(): void {
-    if (this.geteventDay) {
-      this.loadEvent(this.geteventDay);
-    }
-  }
-
-  @Input()
-  set eventDay(day: string){
-    this.loadEvent(day);
-  }
-
-  loadEvent(day: string): void {
-    this.eventService.getEventByDay(day).subscribe((event) => {
-      this.event = {
-        ...event,
-        date: event.startsAt.split('T')[0],
-        startsAt: event.startsAt.split('T')[1].slice(0, 5),
-        finishesAt: event.finishesAt.split('T')[1].slice(0, 5),
-      };
-      this.dialogOpen = true;
-    });
-  }
-
   editEvent(eventForm: NgForm) {
+    let date = this.eventToEdit.startsAt.toString().split('T')[0];
     this.eventIn = {
-      building: this.event.building,
-      classroom: this.event.classroom,
-      comments: this.event.comments,
-      startsAt: this.combineDateAndTime(this.event.date, this.event.startsAt),
-      finishesAt: this.combineDateAndTime(this.event.date, this.event.finishesAt),
-      link: this.event.link,
-      subject: this.event.subject,
-      teacher: this.event.teacher,
+      building: this.eventToEdit.building,
+      classroom: this.eventToEdit.classroom,
+      comments: this.eventToEdit.comments,
+      startsAt: this.combineDateAndTime(date, this.eventToEdit.start),
+      finishesAt: this.combineDateAndTime(date, this.eventToEdit.finish),
+      link: this.eventToEdit.link,
+      subject: this.eventToEdit.subject,
+      teacher: this.eventToEdit.teacher,
     };
 
     if (eventForm.invalid) {
@@ -80,22 +62,21 @@ export class AdminEventEditComponent implements OnInit {
       return;
     }
 
-    this.eventService.updateEvent(this.event.date, this.eventIn).subscribe({
-      next: () => {
-        alert('Evento Actualizado');
-        this.closeDialog();
-      },
-      error: (error) => {
-        console.error('Error updating event', error);
-      },
-    });
+    this.eventService
+      .updateEvent(this.eventToEdit?.id, this.eventIn)
+      .subscribe({
+        next: () => {
+          alert('Evento Actualizado');
+          this.closeDialog();
+        },
+        error: (error) => {
+          console.error('Error updating event', error);
+        },
+      });
   }
 
   openDialog() {
     this.dialogOpen = true;
-    if (this.geteventDay) {
-      this.loadEvent(this.geteventDay);
-    }
   }
 
   closeDialog() {
@@ -103,7 +84,6 @@ export class AdminEventEditComponent implements OnInit {
   }
 
   combineDateAndTime(date: string, time: string): string {
-    const dateTime = new Date(`${date}T${time}:00Z`);
-    return dateTime.toISOString();
+    return `${date}T${time}:00Z`;
   }
 }
