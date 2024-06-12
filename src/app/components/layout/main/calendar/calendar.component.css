@@ -21,7 +21,6 @@
   background-color: #ffffff;
   border-radius: 20px;
   width: 420px;
-  min-height: 400px;
   flex-direction: column;
   padding: 10px;
   margin-top: 10px;
@@ -38,6 +37,8 @@
   flex-direction: row;
   border: 1px solid #000000;
   border-radius: 10px;
+  min-height: 85vh;
+  max-height: 85vh;
 }
 
 .leftSide {
@@ -103,7 +104,7 @@
 .subjectTitle {
   border-bottom: solid #000000 1px;
   padding-bottom: 2px;
-  width: 330px;
+  width: 30vw;
 }
 
 .StartDate {
