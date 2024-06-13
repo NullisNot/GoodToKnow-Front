@@ -1,0 +1,49 @@
+<button class="Event" (click)="openDialog()">Editar evento</button>
+<div *ngIf="dialogOpen" class="dialog-overlay"></div>
+<div *ngIf="dialogOpen" class="dialog">
+  <form (ngSubmit)="editEvent(eventForm)" #eventForm="ngForm" class="eventForm">
+    <button class="close-button" (click)="closeDialog()" type="button">x</button>
+
+    <div class="form">
+      <label for="subject">Asignatura:</label>
+      <input type="text" id="subject" [(ngModel)]="eventToEdit.subject" name="subject" required>
+
+      <label for="teacher">Docente:</label>
+      <input type="text" id="teacher" [(ngModel)]="eventToEdit.teacher" name="teacher" required>
+
+      <!-- <label for="date">Fecha:</label>
+      <input type="date" id="date" [(ngModel)]="eventToEdit.date" name="date" required> -->
+
+      <div class="time">
+        <div>
+          <label for="startsAt">Hora inicio:</label>
+          <input type="time" id="startsAt" [(ngModel)]="eventToEdit.start" name="startsAt" required>
+        </div>
+        <div>
+          <label for="finishesAt">Hora fin:</label>
+          <input type="time" id="finishesAt" [(ngModel)]="eventToEdit.finish" name="finishesAt" required>
+        </div>
+      </div>
+
+      <label for="building">Edificio:</label>
+      <input type="text" id="building" [(ngModel)]="eventToEdit.building" name="building" required>
+
+      <label for="classroom">Aula:</label>
+      <input type="text" id="classroom" [(ngModel)]="eventToEdit.classroom" name="classroom" required>
+
+      <label for="link">Link:</label>
+      <input type="url" id="link" [(ngModel)]="eventToEdit.link" name="link">
+
+      <label for="comments">Observaciones:</label>
+      <textarea id="comments" [(ngModel)]="eventToEdit.comments" name="comments"></textarea>
+    </div>
+
+    <div class="formFooter">
+      <div class="notification">
+        <label for="notification">Notificación:</label>
+        <input type="checkbox" id="notification" [(ngModel)]="notification" name="notification">
+      </div>
+      <button class="finish" type="submit">Confirmar</button>
+    </div>
+  </form>
+</div>
