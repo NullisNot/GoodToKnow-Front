@@ -1,8 +1,6 @@
 .notifications{
-    max-width: 500px;
-    margin-right: 20px;
-    margin-left: 20px;
+    max-width: 550px;
     min-width: 300px;
+    margin: auto;
     margin-top: 110px;
-    
 }

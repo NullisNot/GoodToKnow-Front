@@ -31,6 +31,7 @@ export class NotificationSectionComponent {
       if (notifications[index].startsAt && notifications[index].finishesAt){
         element.time= notifications[index].startsAt + "-" + notifications[index].finishesAt
       }
+      element.title= `Cambio en la próxima clase del ${notifications[index].startsAt}!`
       result.push(element)
     }
     return result 

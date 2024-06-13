@@ -1,11 +1,10 @@
 <div class="bubble">
         <div class="image">
-                <img *ngIf="type == 'notification' else reminderImage" src="../../../../../../../assets/icons/notification.png" />
+                <i *ngIf="type == 'notification' else reminderImage" class="fa-solid fa-bullhorn"></i>
                 
-                <ng-template #reminderImage>
-                        <img src="../../../../../../../assets/icons/reminder.png" />
-
-                      </ng-template>                  
+                <ng-template #reminderImage>   
+                        <i class="fas fa-bell"></i>
+                </ng-template>                  
 
         </div>
         

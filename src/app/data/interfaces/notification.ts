@@ -1,5 +1,4 @@
 export interface Notification {
-    title: string | undefined;
     subject: string | undefined;
     teacher: string | undefined;
     building: string | undefined;

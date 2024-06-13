@@ -1,32 +1,26 @@
 import { Notification } from "../interfaces/notification"
 export const notifications:Array<Notification> = [
     {
-        title: "¡ Cambio en la clase del próximo 6 de abril !",
         building: "Campus norte",
         classroom: "Aula 1",
         subject: undefined,
-        startsAt: undefined,
+        startsAt: "6 de abril",
         finishesAt: undefined,
         teacher: undefined,
         link: undefined,
         comments: undefined,
         type: "notification"
-
     },
     {
-        title: "¡ Cambio en la asignatura del próximo 10 de abril! ",
         building: undefined,
         classroom: undefined,
         subject: "Base de datos",
-        startsAt: undefined,
+        startsAt: "10 de abril",
         finishesAt: undefined,
         teacher: undefined,
         link: undefined,
         comments: undefined,
         type: "reminder"
-
     }
-
-
 ]
 
