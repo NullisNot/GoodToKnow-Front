@@ -1,8 +1,11 @@
-<button class="Event" (click)="openDialog()">Añadir evento</button>
+<button class="Event" (click)="openDialog()">
+  Añadir evento
+</button>
 <div *ngIf="dialogOpen" class="dialog-overlay"></div>
 <div *ngIf="dialogOpen" class="dialog">
   <form (ngSubmit)="createEvent(eventForm)" #eventForm="ngForm" class="eventForm">
-    <button class="close-button" (click)="closeDialog()" type="button">x</button>
+    <button class="close-button" (click)="closeDialog()" type="button"><i class="fas fa-times"></i>
+    </button>
 
     <div class="form">
       <label for="subject">Asignatura:</label>
@@ -40,7 +43,7 @@
 
     <div class="formFooter">
       <div class="notification">
-        <label for="notification">Notificación:</label>
+        <label for="notification"><i class="fas fa-bell"></i></label>
         <input type="checkbox" id="notification" [(ngModel)]="notification" name="notification">
       </div>
       <button class="finish" type="submit">Confirmar</button>
