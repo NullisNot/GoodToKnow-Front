@@ -8,15 +8,21 @@ import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { EventsService } from '../../../../services/events.service';
 import { EventStructure } from './eventStructure';
+import { AdminEventEditComponent } from '../admin-edit-event-form/admin-edit-event-form.component';
 import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-calendar',
   standalone: true,
-  imports: [FullCalendarModule, CommonModule, HttpClientModule],
   templateUrl: './calendar.component.html',
   styleUrl: './calendar.component.css',
   providers: [EventsService, DatePipe],
+  imports: [
+    FullCalendarModule,
+    CommonModule,
+    HttpClientModule,
+    AdminEventEditComponent,
+  ],
 })
 export class CalendarComponent {
   events: { startDate: string; events: EventStructure[] }[] = [];
@@ -84,8 +90,6 @@ export class CalendarComponent {
   }
 
   formatDateTitle(date: Date): string {
-    const options = { day: 'numeric', month: 'long' };
-    const locale = 'es-ES';
-    return this.datePipe.transform(new Date(date), 'dd MMMM', 'es-ES') || '';
+    return this.datePipe.transform(new Date(date), 'dd MM', 'es-ES') || '';
   }
 }
