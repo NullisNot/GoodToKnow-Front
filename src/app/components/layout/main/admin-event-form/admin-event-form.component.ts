@@ -36,6 +36,7 @@ export class AdminEventFormComponent {
     link: '',
     subject: '',
     teacher: '',
+    notification: false,
   };
 
   'notification': boolean;
@@ -55,6 +56,7 @@ export class AdminEventFormComponent {
       link: this.event.link,
       subject: this.event.subject,
       teacher: this.event.teacher,
+      notification: this.notification,
     };
 
     if (eventForm.invalid) {
