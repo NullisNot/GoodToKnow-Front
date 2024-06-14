@@ -47,6 +47,10 @@
   font-size: 25px;
   font-weight: bold;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding-bottom: 15px;
 }
 
 .rightSide {
@@ -123,4 +127,15 @@
   width: 100%;
   min-height: 20px;
   
+}
+
+.buttons {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.add-event {
+  position: absolute;
+  top: 80px;
+  right: 50px;
 }
