@@ -3,8 +3,8 @@ export interface Notification {
     teacher: string | undefined;
     building: string | undefined;
     classroom: string | undefined;
-    startsAt: string | undefined;
-    finishesAt: string | undefined;
+    startsAt: any | undefined;
+    finishesAt: any | undefined;
     link: string | undefined;
     comments: string | undefined;
     type: string;

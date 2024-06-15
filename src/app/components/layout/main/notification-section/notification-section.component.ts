@@ -29,11 +29,21 @@ export class NotificationSectionComponent {
         element.place= notifications[index].building + ", " + notifications[index].classroom
       }
       if (notifications[index].startsAt && notifications[index].finishesAt){
-        element.time= notifications[index].startsAt + "-" + notifications[index].finishesAt
+        element.time= this.getTime(notifications[index].startsAt) + "-" + this.getTime(notifications[index].finishesAt)
       }
-      element.title= `Cambio en la próxima clase del ${notifications[index].startsAt}!`
+      element.title= `Cambio en la próxima clase del ${this.getDate(notifications[index].startsAt)}!`
       result.push(element)
     }
     return result 
+  }
+  getDate(date:any){
+    const day = date.getDate(); 
+    const month = date.toLocaleString('es-ES', { month: 'long' });
+    return `${day} de ${month}`;
+  }
+  getTime(date:any){
+    const hours = date.getHours(); 
+    const minutes = date.getMinutes().toString().padStart(2, '0');
+    return `${hours}:${minutes}`;
   }
 }

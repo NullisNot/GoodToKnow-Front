@@ -54,6 +54,11 @@
     font-size: 25px;  
 }
 
+.description{
+    position: relative;
+    float: left;
+}
+
 
 
 
