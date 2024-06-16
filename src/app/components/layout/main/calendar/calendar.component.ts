@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FullCalendarModule } from '@fullcalendar/angular';
 import { CalendarOptions } from '@fullcalendar/core';
 import dayGridPlugin from '@fullcalendar/daygrid';
@@ -26,20 +26,24 @@ import { AdminEventFormComponent } from '../admin-event-form/admin-event-form.co
     AdminEventFormComponent,
   ],
 })
-export class CalendarComponent {
+export class CalendarComponent implements OnInit {
   events: { startDate: string; events: EventStructure[] }[] = [];
   selectedDate: string = new Date().toISOString().split('T')[0];
   noEventsMessage: string = '';
+  currentYear: number;
+  currentMonth: number;
 
   constructor(
     private eventsService: EventsService,
     private datePipe: DatePipe
   ) {
-    this.getData({ dateStr: this.selectedDate });
+    this.currentYear = new Date().getFullYear();
+    this.currentMonth = new Date().getMonth() + 1;
   }
 
   handleDateClick(arg: any) {
-    this.getData(arg);
+    this.selectedDate = arg.dateStr;
+    this.getData(this.selectedDate);
   }
 
   calendarOptions: CalendarOptions = {
@@ -51,8 +55,36 @@ export class CalendarComponent {
     events: [],
   };
 
-  getData(arg: any) {
-    this.eventsService.getEventByDay(arg.dateStr).subscribe({
+  ngOnInit() {
+    this.updateEvents();
+  }
+
+  updateEvents() {
+    this.eventsService
+      .getEventsByMonth(this.currentYear, this.currentMonth)
+      .subscribe(
+        (data: any) => {
+          const calendarEvents: any[] = [];
+
+          data.forEach((evento: EventStructure) => {
+            calendarEvents.push({
+              title: evento.subject,
+              start: evento.startsAt,
+            });
+          });
+
+          this.calendarOptions.events = calendarEvents;
+        },
+        (error) => {
+          console.error('Error al obtener eventos del mes:', error);
+        }
+      );
+
+    this.getData(this.selectedDate);
+  }
+
+  getData(date: string) {
+    this.eventsService.getEventByDay(date).subscribe({
       next: (data) => {
         const eventsByDate: { [date: string]: EventStructure[] } = {};
 
@@ -76,8 +108,8 @@ export class CalendarComponent {
           this.events.length === 0 ? 'No hay eventos registrados' : '';
       },
       error: (error) => {
-        console.error('Error', error);
-        this.noEventsMessage = 'Error al cargar eventos';
+        console.error('Error al cargar eventos del día:', error);
+        this.noEventsMessage = 'Error al cargar eventos del día';
       },
     });
   }
@@ -92,6 +124,6 @@ export class CalendarComponent {
   }
 
   formatDateTitle(date: Date): string {
-    return this.datePipe.transform(new Date(date), 'dd MM', 'es-ES') || '';
+    return this.datePipe.transform(new Date(date), 'dd MM') || '';
   }
 }

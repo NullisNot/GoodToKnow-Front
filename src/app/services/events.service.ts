@@ -28,4 +28,9 @@ export class EventsService {
   deleteEvent(id: number | undefined): Observable<any> {
     return this.http.delete(`${this.apiUrl}/${id}`);
   }
+
+  getEventsByMonth(year: number, month: number): Observable<Event[]> {
+    const url = `${this.apiUrl}/${year}/${month}`;
+    return this.http.get<Event[]>(url);
+  }
 }
