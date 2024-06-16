@@ -28,7 +28,7 @@ import { RouterModule } from '@angular/router';
 export class BlockEventsComponent {
   dialogOpen: boolean = false;
 
-  event: Event = {
+  event: any = {
     building: '',
     classroom: '',
     comments: '',
@@ -40,86 +40,77 @@ export class BlockEventsComponent {
     date: '',
   };
 
-  eventIn: EventIn = {
-    building: '',
-    classroom: '',
-    comments: '',
-    startsAt: '',
-    finishesAt: '',
-    link: '',
-    subject: '',
-    teacher: '',
-  };
+  selectedDates: string[] = [];
+  selectedDatesText = '';
 
   constructor(private eventService: EventsService) {}
-
-  selectedDates: Date[] = [];
-  selectedDatesText = '';
 
   calendarOptions: CalendarOptions = {
     initialView: 'dayGridMonth',
     plugins: [dayGridPlugin, interactionPlugin],
     selectable: true,
-    select: this.handleDateSelect.bind(this),
+    select: (selectInfo) => this.handleDateSelect(selectInfo),
     locale: esLocale,
     events: [],
   };
 
   handleDateSelect(selectInfo: any) {
-    const selectedDate = selectInfo.start;
+    const selectedDate = new Date(selectInfo.startStr); // Convertir startStr a objeto Date
 
-    const existingIndex = this.selectedDates.findIndex(
-      (date) => date.getTime() === selectedDate.getTime()
-    );
-    if (existingIndex !== -1) {
-      this.selectedDates.splice(existingIndex, 1);
-    } else {
-      this.selectedDates.push(selectedDate);
-    }
-
+    this.toggleSelectedDate(selectedDate);
     this.updateSelectedDatesText();
+  }
+
+  toggleSelectedDate(selectedDate: Date) {
+    const isoDateString = selectedDate.toISOString().slice(0, 10); // Recortar para obtener solo la fecha en formato ISO
+
+    const index = this.selectedDates.findIndex(
+      (date) => date === isoDateString
+    );
+
+    if (index === -1) {
+      this.selectedDates.push(isoDateString);
+    } else {
+      this.selectedDates.splice(index, 1);
+    }
   }
 
   updateSelectedDatesText() {
     this.selectedDatesText = this.selectedDates
-      .map((date) => date.toLocaleDateString())
+      .map((isoDate) => new Date(isoDate).toLocaleDateString())
       .join(', ');
   }
 
-  clearSelectedDates() {
-    this.selectedDates = [];
-    this.selectedDatesText = '';
-  }
-
-  createEvent(eventForm: NgForm) {
-    this.eventIn = {
-      building: this.event.building,
-      classroom: this.event.classroom,
-      comments: this.event.comments,
-      startsAt: this.combineDateAndTime(this.event.date, this.event.startsAt),
-      finishesAt: this.combineDateAndTime(
-        this.event.date,
-        this.event.finishesAt
-      ),
-      link: this.event.link,
-      subject: this.event.subject,
-      teacher: this.event.teacher,
-    };
-
+  createEventsFromSelectedDates(eventForm: NgForm) {
     if (eventForm.invalid) {
       alert('Por favor, rellena todos los campos');
       return;
     }
-    this.eventService.createEvent(this.eventIn).subscribe({
-      next: (data) => {
-        alert('Evento Creado');
-        eventForm.resetForm();
-        this.closeDialog();
-      },
-      error: (error) => {
-        console.error('Error creating event', error);
-      },
+
+    const eventsToCreate = this.selectedDates.map((isoDate) => ({
+      building: this.event.building,
+      classroom: this.event.classroom,
+      comments: this.event.comments,
+      startsAt: this.combineDateAndTime(isoDate, this.event.startsAt),
+      finishesAt: this.combineDateAndTime(isoDate, this.event.finishesAt),
+      link: this.event.link,
+      subject: this.event.subject,
+      teacher: this.event.teacher,
+    }));
+
+    eventsToCreate.forEach((eventToCreate) => {
+      this.eventService.createEvent(eventToCreate).subscribe({
+        next: () => {
+          // Implementar lógica de manejo de éxito si es necesario
+        },
+        error: (error) => {
+          console.error('Error creating event', error);
+        },
+      });
     });
+
+    alert('Eventos Creados');
+    eventForm.resetForm();
     this.closeDialog();
   }
 

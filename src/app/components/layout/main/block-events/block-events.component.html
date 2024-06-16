@@ -4,23 +4,18 @@
   </button>
   <div *ngIf="dialogOpen" class="dialog-overlay"></div>
   <div *ngIf="dialogOpen" class="dialog">
-    <form (ngSubmit)="createEvent(eventForm)" #eventForm="ngForm" class="eventForm">
+    <form (ngSubmit)="createEventsFromSelectedDates(eventForm)" #eventForm="ngForm" class="eventForm">
       <div class="form"></div>
       <h3>Días seleccionados:</h3>
       <ul>
         <li *ngFor="let date of selectedDates">{{ date | date }}</li>
       </ul>
-      <textarea rows="3" cols="30" [(ngModel)]="selectedDatesText"></textarea>
-      <button (click)="clearSelectedDates()">Limpiar selección</button>
       
         <label for="subject">Asignatura:</label>
         <input type="text" id="subject" [(ngModel)]="event.subject" name="subject" required>
 
         <label for="teacher">Docente:</label>
         <input type="text" id="teacher" [(ngModel)]="event.teacher" name="teacher" required>
-
-        <label for="date">Fecha:</label>
-        <input type="date" id="date" [(ngModel)]="event.date" name="date" required>
 
         <div class="time">
           <div>
