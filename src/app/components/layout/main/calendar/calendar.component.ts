@@ -48,6 +48,11 @@ export class CalendarComponent implements OnInit {
 
   calendarOptions: CalendarOptions = {
     initialView: 'dayGridMonth',
+    eventTimeFormat: {
+      hour: '2-digit',
+      minute: '2-digit',
+      hour12: false,
+    },
     plugins: [dayGridPlugin, interactionPlugin],
     dateClick: this.handleDateClick.bind(this),
     locale: esLocale,
@@ -67,9 +72,14 @@ export class CalendarComponent implements OnInit {
           const calendarEvents: any[] = [];
 
           data.forEach((evento: EventStructure) => {
+            const start = new Date(evento.startsAt);
+            const formattedStart = this.datePipe.transform(
+              start,
+              'yyyy-MM-ddTHH:mm:ss'
+            );
+
             calendarEvents.push({
-              title: evento.subject,
-              start: evento.startsAt,
+              start: formattedStart,
             });
           });
 
