@@ -1,6 +1,4 @@
 import { Component } from '@angular/core';
-import { NavComponent } from '../../layout/header/nav/nav.component';
-import { FooterComponent } from "../../layout/footer/footer.component";
 import { InfoSectionComponent } from "../../layout/main/info-section/info-section.component";
 
 @Component({
@@ -8,6 +6,6 @@ import { InfoSectionComponent } from "../../layout/main/info-section/info-sectio
     standalone: true,
     templateUrl: './admin-information.component.html',
     styleUrl: './admin-information.component.css',
-    imports: [NavComponent, FooterComponent, InfoSectionComponent]
+    imports: [InfoSectionComponent]
 })
 export class AdminInformationComponent {}

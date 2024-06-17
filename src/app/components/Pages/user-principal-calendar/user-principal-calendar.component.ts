@@ -1,6 +1,4 @@
 import { Component } from '@angular/core';
-import { FooterComponent } from '../../layout/footer/footer.component';
-import { NavComponent } from '../../layout/header/nav/nav.component';
 import { CalendarComponent } from "../../layout/main/calendar/calendar.component";
 
 @Component({
@@ -8,6 +6,6 @@ import { CalendarComponent } from "../../layout/main/calendar/calendar.component
     standalone: true,
     templateUrl: './user-principal-calendar.component.html',
     styleUrl: './user-principal-calendar.component.css',
-    imports: [FooterComponent, NavComponent, CalendarComponent]
+    imports: [CalendarComponent]
 })
 export class UserPrincipalCalendarComponent {}

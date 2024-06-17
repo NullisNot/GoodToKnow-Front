@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { LoginComponent } from '../../layout/main/login/login.component';
-import { FooterComponent } from '../../layout/footer/footer.component';
 import { NavComponent } from '../../layout/header/nav/nav.component';
 
 @Component({
@@ -8,6 +7,6 @@ import { NavComponent } from '../../layout/header/nav/nav.component';
   standalone: true,
   templateUrl: './landing.component.html',
   styleUrl: './landing.component.css',
-  imports: [LoginComponent, FooterComponent, NavComponent],
+  imports: [LoginComponent, NavComponent],
 })
 export class LandingComponent {}
