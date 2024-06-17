@@ -19,4 +19,5 @@ export interface EventIn {
   link: string;
   subject: string;
   teacher: string;
+  notification: boolean;
 }

@@ -5,6 +5,7 @@ import { NavComponent } from '../../layout/header/nav/nav.component';
 import { CalendarComponent } from '../../layout/main/calendar/calendar.component';
 import { FooterComponent } from '../../layout/footer/footer.component';
 import { EventsService } from '../../../services/events.service';
+import { AdminEventEditComponent } from '../../layout/main/admin-edit-event-form/admin-edit-event-form.component';
 
 @Component({
   selector: 'app-admin-principal-calendar',
@@ -13,11 +14,18 @@ import { EventsService } from '../../../services/events.service';
   styleUrl: './admin-principal-calendar.component.css',
   providers: [EventsService],
   imports: [
-    AdminEventFormComponent,
     CommonModule,
     CalendarComponent,
     FooterComponent,
     NavComponent,
+    AdminEventEditComponent,
+    AdminEventFormComponent,
   ],
 })
-export class AdminPrincipalCalendarComponent {}
+export class AdminPrincipalCalendarComponent {
+  selectedEventDay?: string;
+
+  onEventSelected(day: string) {
+    this.selectedEventDay = day;
+  }
+}

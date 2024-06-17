@@ -10,6 +10,9 @@
       <div>
         <h2>{{ noEventsMessage }}</h2>
       </div>
+      <div class="add-event">
+        <app-admin-event-form/>
+      </div>
       <div *ngFor="let eventGroup of events">
         <div *ngFor="let event of eventGroup.events">
           <div class="Event">
@@ -34,6 +37,9 @@
               <div class="EventPart">
                 <h3 class="title">Enlaces:</h3>
                 <h3 class="answer">{{ event.link }}</h3>
+              </div>
+              <div class="buttons">
+                <app-admin-edit-event-form [eventToEdit]="event" />
               </div>
             </div>
           </div>
