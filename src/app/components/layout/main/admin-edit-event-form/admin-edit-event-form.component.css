@@ -1,0 +1,90 @@
+.dialog {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 20px;
+    z-index: 10000;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
+    width: 350px;
+    max-height: 80vh;
+    overflow-y: auto;
+}
+
+.eventForm {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.form {
+    display: grid;
+    gap: 10px;
+}
+
+.close-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: black;
+    font-size: 16px;
+}
+
+.singleForm {
+    display: flex;
+    gap: 10px;
+}
+
+.form-group {
+    display: flex;
+    align-items: center;
+}
+
+label {
+    font-weight: bold;
+    margin-right: 10px;
+    min-width: 100px;
+}
+
+.time {
+    display: flex;
+    justify-content: space-between;
+}
+
+.finish[type="submit"] {
+    background-color: #000000;
+    color: white;
+    padding: 7px 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    align-self: flex-end;
+}
+
+.finish[type="submit"]:hover {
+    background-color: #888;
+}
+
+.formFooter {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.Event {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.buttonsDiv {
+    display: flex;
+    align-self: flex-end;
+    flex-direction: row;
+}
