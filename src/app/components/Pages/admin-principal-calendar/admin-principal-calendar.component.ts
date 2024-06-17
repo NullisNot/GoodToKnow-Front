@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { AdminEventFormComponent } from '../../layout/main/admin-event-form/admin-event-form.component';
 import { CommonModule } from '@angular/common';
-import { NavComponent } from '../../layout/header/nav/nav.component';
 import { CalendarComponent } from '../../layout/main/calendar/calendar.component';
 import { EventsService } from '../../../services/events.service';
 import { AdminEventEditComponent } from "../../layout/main/admin-edit-event-form/admin-edit-event-form.component";
@@ -16,7 +15,6 @@ import { AdminEventEditComponent } from "../../layout/main/admin-edit-event-form
         AdminEventFormComponent,
         CommonModule,
         CalendarComponent,
-        NavComponent,
         AdminEventEditComponent
     ]
 })
