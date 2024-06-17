@@ -6,7 +6,7 @@ import { NotificationComponent } from './components/Pages/notification/notificat
 import { UserPrincipalCalendarComponent } from './components/Pages/user-principal-calendar/user-principal-calendar.component';
 import { AdminNotificationComponent } from './components/Pages/admin-notification/admin-notification.component';
 import { AdminInformationComponent } from './components/Pages/admin-information/admin-information.component';
-
+import { AdminCreateEventsComponent } from './components/Pages/admin-create-events/admin-create-events.component';
 
 export const routes: Routes = [
   {
@@ -36,5 +36,9 @@ export const routes: Routes = [
   {
     path: 'admin-info',
     component: AdminInformationComponent,
-  }
+  },
+  {
+    path: 'admin-create-events',
+    component: AdminCreateEventsComponent,
+  },
 ];
