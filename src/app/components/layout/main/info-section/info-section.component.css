@@ -1,33 +1,24 @@
 .information {
-    max-width: 500px;
-    margin-right: 20px;
-    margin-left: 20px;
+    max-width: 550px;
     min-width: 300px;
-    display: flex;
-    
-    
+    margin: auto;
+    margin-top: 110px;
 }
-.left-section{
+.right-section{
     flex: 1;
     top: 100px;
-    position: absolute;
     width: 362.75px;
     height: 222.67px;
-    left: 75px;
+    margin: auto;
+    margin-top: 30px;
+
 }
 .right-section1{
-    position: absolute;
     width: 381px;
     height: 401px;
-    left: 500px;
     top: 100px;
+    margin: auto;
+    margin-top: 30px;
 
 }
-.right-section2{
-    position: absolute;
-    width: 389.04px;
-    height: 366px;
-    left: 900px;
-    top: 100px; 
 
-}

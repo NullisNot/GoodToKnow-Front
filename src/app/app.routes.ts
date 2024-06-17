@@ -25,6 +25,7 @@ export const routes: Routes = [
     path: 'notification',
     component: NotificationComponent,
   },
+  
   {
     path: 'admin-calendar',
     component: AdminPrincipalCalendarComponent,
