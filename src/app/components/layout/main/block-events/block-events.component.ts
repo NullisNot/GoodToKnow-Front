@@ -8,7 +8,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { CommonModule, DatePipe } from '@angular/common';
 import { EventsService } from '../../../../services/events.service';
 import { FormsModule, NgForm } from '@angular/forms';
-import { Event, EventIn } from '../../../../services/types';
 import { RouterModule } from '@angular/router';
 
 @Component({
@@ -43,7 +42,10 @@ export class BlockEventsComponent {
   selectedDates: string[] = [];
   selectedDatesText = '';
 
-  constructor(private eventService: EventsService) {}
+  constructor(
+    private eventService: EventsService,
+    private datePipe: DatePipe
+  ) {}
 
   calendarOptions: CalendarOptions = {
     initialView: 'dayGridMonth',
@@ -55,14 +57,14 @@ export class BlockEventsComponent {
   };
 
   handleDateSelect(selectInfo: any) {
-    const selectedDate = new Date(selectInfo.startStr); // Convertir startStr a objeto Date
+    const selectedDate = new Date(selectInfo.startStr);
 
     this.toggleSelectedDate(selectedDate);
     this.updateSelectedDatesText();
   }
 
   toggleSelectedDate(selectedDate: Date) {
-    const isoDateString = selectedDate.toISOString().slice(0, 10); // Recortar para obtener solo la fecha en formato ISO
+    const isoDateString = selectedDate.toISOString().slice(0, 10);
 
     const index = this.selectedDates.findIndex(
       (date) => date === isoDateString
@@ -77,8 +79,14 @@ export class BlockEventsComponent {
 
   updateSelectedDatesText() {
     this.selectedDatesText = this.selectedDates
-      .map((isoDate) => new Date(isoDate).toLocaleDateString())
+      .map((isoDate) => this.formatDate(isoDate))
       .join(', ');
+  }
+
+  formatDate(dateString: string): string {
+    const date = new Date(dateString);
+    const formattedDate = this.datePipe.transform(date, 'yyyy/MM/dd');
+    return formattedDate ? formattedDate : dateString;
   }
 
   createEventsFromSelectedDates(eventForm: NgForm) {
@@ -100,26 +108,21 @@ export class BlockEventsComponent {
 
     eventsToCreate.forEach((eventToCreate) => {
       this.eventService.createEvent(eventToCreate).subscribe({
-        next: () => {
-          // Implementar lógica de manejo de éxito si es necesario
-        },
+        next: () => {},
         error: (error) => {
           console.error('Error creating event', error);
         },
       });
     });
 
-    alert('Eventos Creados');
+    alert('Eventos creados');
     eventForm.resetForm();
-    this.closeDialog();
+    this.clearSelectedDates();
   }
 
-  openDialog() {
-    this.dialogOpen = true;
-  }
-
-  closeDialog() {
-    this.dialogOpen = false;
+  clearSelectedDates() {
+    this.selectedDates = [];
+    this.selectedDatesText = '';
   }
 
   combineDateAndTime(date: string, time: string): string {
