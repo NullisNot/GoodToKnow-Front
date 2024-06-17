@@ -31,6 +31,8 @@ export class CalendarComponent {
   selectedDate: string = new Date().toISOString().split('T')[0];
   noEventsMessage: string = '';
 
+  isBorderRadius: boolean = false;
+
   constructor(
     private eventsService: EventsService,
     private datePipe: DatePipe
@@ -74,12 +76,18 @@ export class CalendarComponent {
 
         this.noEventsMessage =
           this.events.length === 0 ? 'No hay eventos registrados' : '';
+        this.fixBorderRadius();
       },
       error: (error) => {
         console.error('Error', error);
         this.noEventsMessage = 'Error al cargar eventos';
+        this.fixBorderRadius();
       },
     });
+  }
+
+  fixBorderRadius() {
+    this.isBorderRadius = this.events.length === 0;
   }
 
   formatDate(date: Date): string {
