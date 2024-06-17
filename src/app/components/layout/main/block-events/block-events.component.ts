@@ -37,6 +37,7 @@ export class BlockEventsComponent {
     subject: '',
     teacher: '',
     date: '',
+    notification: false,
   };
 
   selectedDates: string[] = [];
@@ -104,6 +105,7 @@ export class BlockEventsComponent {
       link: this.event.link,
       subject: this.event.subject,
       teacher: this.event.teacher,
+      notification: this.event.notification,
     }));
 
     eventsToCreate.forEach((eventToCreate) => {
