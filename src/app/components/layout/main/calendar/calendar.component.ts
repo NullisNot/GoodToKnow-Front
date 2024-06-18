@@ -1,5 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { FullCalendarModule } from '@fullcalendar/angular';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import {
+  FullCalendarModule,
+  FullCalendarComponent,
+} from '@fullcalendar/angular';
 import { CalendarOptions } from '@fullcalendar/core';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import interactionPlugin from '@fullcalendar/interaction';
@@ -27,6 +30,8 @@ import { AdminEventFormComponent } from '../admin-event-form/admin-event-form.co
   ],
 })
 export class CalendarComponent implements OnInit {
+  @ViewChild('fullcalendar') fullcalendar!: FullCalendarComponent;
+
   events: { startDate: string; events: EventStructure[] }[] = [];
   selectedDate: string = new Date().toISOString().split('T')[0];
   noEventsMessage: string = '';
@@ -62,35 +67,6 @@ export class CalendarComponent implements OnInit {
 
   ngOnInit() {
     this.updateEvents();
-  }
-
-  updateEvents() {
-    this.eventsService
-      .getEventsByMonth(this.currentYear, this.currentMonth)
-      .subscribe(
-        (data: any) => {
-          const calendarEvents: any[] = [];
-
-          data.forEach((evento: EventStructure) => {
-            const start = new Date(evento.startsAt);
-            const formattedStart = this.datePipe.transform(
-              start,
-              'yyyy-MM-ddTHH:mm:ss'
-            );
-
-            calendarEvents.push({
-              start: formattedStart,
-            });
-          });
-
-          this.calendarOptions.events = calendarEvents;
-        },
-        (error) => {
-          console.error('Error al obtener eventos del mes:', error);
-        }
-      );
-
-    this.getData(this.selectedDate);
   }
 
   getData(date: string) {
@@ -135,5 +111,79 @@ export class CalendarComponent implements OnInit {
 
   formatDateTitle(date: Date): string {
     return this.datePipe.transform(new Date(date), 'dd MM') || '';
+  }
+
+  updateEvents() {
+    this.eventsService
+      .getEventsByMonth(this.currentYear, this.currentMonth)
+      .subscribe(
+        (data: any) => {
+          const calendarEvents: any[] = [];
+
+          data.forEach((evento: EventStructure) => {
+            const start = new Date(evento.startsAt);
+            const formattedStart = this.datePipe.transform(
+              start,
+              'yyyy-MM-ddTHH:mm:ss'
+            );
+
+            calendarEvents.push({
+              start: formattedStart,
+            });
+          });
+
+          this.calendarOptions.events = calendarEvents;
+          this.fullcalendar.getApi().refetchEvents();
+          console.log();
+        },
+        (error) => {
+          console.error('Error al obtener eventos del mes:', error);
+        }
+      );
+
+    this.getData(this.selectedDate);
+  }
+
+  ngAfterViewInit() {
+    const prevButton = document.querySelector('.fc-prev-button');
+    const nextButton = document.querySelector('.fc-next-button');
+    const todayButton = document.querySelector('.fc-today-button');
+
+    if (prevButton) {
+      prevButton.addEventListener('click', this.onPrevClick.bind(this));
+    }
+    if (nextButton) {
+      nextButton.addEventListener('click', this.onNextClick.bind(this));
+    }
+    if (todayButton) {
+      todayButton.addEventListener('click', this.onTodayClick.bind(this));
+    }
+  }
+
+  onPrevClick() {
+    if (this.currentMonth === 1) {
+      this.currentMonth = 12;
+      this.currentYear -= 1;
+    } else {
+      this.currentMonth -= 1;
+    }
+    this.updateEvents();
+  }
+
+  onNextClick() {
+    if (this.currentMonth === 12) {
+      this.currentMonth = 1;
+      this.currentYear += 1;
+    } else {
+      this.currentMonth += 1;
+    }
+    this.updateEvents();
+  }
+
+  onTodayClick() {
+    const today = new Date();
+    this.currentYear = today.getFullYear();
+    this.currentMonth = today.getMonth() + 1;
+    this.updateEvents();
   }
 }

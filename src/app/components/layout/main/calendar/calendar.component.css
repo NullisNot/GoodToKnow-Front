@@ -108,7 +108,7 @@
 .subjectTitle {
   border-bottom: solid #000000 1px;
   padding-bottom: 2px;
-  width: 30vw;
+  width: 27vw;
 }
 
 .StartDate {
@@ -136,6 +136,6 @@
 
 .add-event {
   position: absolute;
-  top: 80px;
-  right: 50px;
+  top: 11vh;
+  right: 5vw;
 }

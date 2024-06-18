@@ -76,13 +76,14 @@ label {
 }
 
 .Event {
-    cursor: pointer;
-    color: #000000;
-    font-size: 16px;
+    background-color: #000000;
+    color: white;
+    padding: 5px 10px;
+    border: none;
     border-radius: 5px;
-    background-color: #d3d3d3;transition: background-color 0.3s ease;
+    cursor: pointer;
 }
 
 .Event:hover {
-    background-color: #bfbfbf;
+    background-color: #888;
 }
