@@ -38,6 +38,8 @@ export class CalendarComponent implements OnInit {
   currentYear: number;
   currentMonth: number;
 
+  isBorderRadius: boolean = false;
+
   constructor(
     private eventsService: EventsService,
     private datePipe: DatePipe
@@ -92,12 +94,18 @@ export class CalendarComponent implements OnInit {
 
         this.noEventsMessage =
           this.events.length === 0 ? 'No hay eventos registrados' : '';
+        this.fixBorderRadius();
       },
       error: (error) => {
-        console.error('Error al cargar eventos del día:', error);
-        this.noEventsMessage = 'Error al cargar eventos del día';
+        console.error('Error', error);
+        this.noEventsMessage = 'Error al cargar eventos';
+        this.fixBorderRadius();
       },
     });
+  }
+
+  fixBorderRadius() {
+    this.isBorderRadius = this.events.length === 0;
   }
 
   formatDate(date: Date): string {

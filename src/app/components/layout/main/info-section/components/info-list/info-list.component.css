@@ -1,11 +1,14 @@
 
+.title{
+    font-weight: bold;
+}
+
 .data{
     padding: 25px;
     background-color: #D3D3D3;
     display: inline-block;
     width: 100%;
     margin-bottom: 5px;
-    
 }
 
 .info-list-container{
@@ -14,7 +17,6 @@
     height: 350px;
     margin-top:20px;  
     margin-right: 20px;
- 
 }
 
 

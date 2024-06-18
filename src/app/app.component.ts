@@ -1,14 +1,32 @@
-import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
-
+import { CommonModule } from '@angular/common';
+import { Component, OnInit } from '@angular/core';
+import { Router, NavigationEnd, RouterOutlet } from '@angular/router';
+import { filter } from 'rxjs/operators';
+import { NavComponent } from './components/layout/header/nav/nav.component';
+import { FooterComponent } from './components/layout/footer/footer.component';
 
 @Component({
   selector: 'app-root',
-  standalone: true,
-  imports: [RouterOutlet,],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styleUrls: ['./app.component.css'],
+  standalone: true,
+  imports:[CommonModule, NavComponent, FooterComponent, RouterOutlet]
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'GoodToKnow';
+  url: string;
+
+  constructor(private router: Router) {
+    this.url = '';
+  }
+
+  ngOnInit() {
+    this.router.events.pipe(
+      filter(event => event instanceof NavigationEnd)
+    ).subscribe((event: any) => {
+      this.url = event.urlAfterRedirects;
+      console.log('Ruta actual:', this.url);
+    });
+  }
 }
+

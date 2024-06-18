@@ -1,0 +1,45 @@
+<div class="fullSide">
+  <div class="leftSide">
+    <full-calendar [options]="calendarOptions"></full-calendar>
+  </div>
+  <div class="rightSide">
+    <form (ngSubmit)="createEventsFromSelectedDates(eventForm)" #eventForm="ngForm" class="eventForm">
+      <div class="form"></div>
+      <label for="selectedDates">Días seleccionados:</label>
+      <div class="selected-dates">
+        <span *ngIf="selectedDates.length > 0">{{ selectedDates.join(', ') }}</span>
+      </div>
+      <button type="button" (click)="clearSelectedDates()">Limpiar selección</button>
+
+      <label for="subject">Asignatura:</label>
+      <input type="text" id="subject" [(ngModel)]="event.subject" name="subject" required>
+
+      <label for="teacher">Docente:</label>
+      <input type="text" id="teacher" [(ngModel)]="event.teacher" name="teacher" required>
+
+      <div class="time">
+        <div>
+          <label for="startsAt">Hora inicio:</label>
+          <input type="time" id="startsAt" [(ngModel)]="event.startsAt" name="startsAt" required>
+        </div>
+        <div>
+          <label for="finishesAt">Hora fin:</label>
+          <input type="time" id="finishesAt" [(ngModel)]="event.finishesAt" name="finishesAt" required>
+        </div>
+      </div>
+
+      <label for="building">Edificio:</label>
+      <input type="text" id="building" [(ngModel)]="event.building" name="building" required>
+
+      <label for="classroom">Aula:</label>
+      <input type="text" id="classroom" [(ngModel)]="event.classroom" name="classroom" required>
+
+      <label for="link">Link:</label>
+      <input type="url" id="link" [(ngModel)]="event.link" name="link">
+
+      <label for="comments">Observaciones:</label>
+      <textarea id="comments" [(ngModel)]="event.comments" name="comments"></textarea>
+      <button class="finish" type="submit">Confirmar</button>
+    </form>
+  </div>
+</div>

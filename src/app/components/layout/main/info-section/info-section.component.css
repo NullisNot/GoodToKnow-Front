@@ -1,33 +1,14 @@
 .information {
-    max-width: 500px;
-    margin-right: 20px;
-    margin-left: 20px;
+    max-width: 550px;
     min-width: 300px;
+    margin: auto;
     display: flex;
-    
-    
+    flex-direction: column;
+    max-height: 80%;
+    min-height: 80%;
 }
-.left-section{
-    flex: 1;
-    top: 100px;
-    position: absolute;
-    width: 362.75px;
-    height: 222.67px;
-    left: 75px;
-}
-.right-section1{
-    position: absolute;
-    width: 381px;
-    height: 401px;
-    left: 500px;
-    top: 100px;
 
-}
-.right-section2{
-    position: absolute;
-    width: 389.04px;
-    height: 366px;
-    left: 900px;
-    top: 100px; 
-
+.information div{
+    width: 500px;
+    margin: auto;
 }

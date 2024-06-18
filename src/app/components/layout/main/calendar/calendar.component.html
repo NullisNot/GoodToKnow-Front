@@ -9,7 +9,7 @@
     <div class="leftSide" *ngFor="let eventGroup of events">
         <h3>{{ eventGroup.startDate }}</h3>
     </div>
-    <div class="rightSide">
+    <div class="rightSide" [ngClass]="{'left-border-radius': isBorderRadius}">
       <div>
         <h2>{{ noEventsMessage }}</h2>
       </div>

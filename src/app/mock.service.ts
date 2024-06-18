@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { info } from './data/mock/info';
 import { Information } from './data/interfaces/info';
+import { notifications } from './data/mock/notification';
+import { Notification } from './data/interfaces/notification';
 
 @Injectable({
   providedIn: 'root',
@@ -19,4 +21,9 @@ export class MockService {
   getInformation():Information {
     return info;
   }
+
+  getNotifications():Array<Notification>{
+    return notifications;
+  }
 }
+

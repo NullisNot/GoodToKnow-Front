@@ -28,6 +28,8 @@ export class AdminEventEditComponent {
     finish: '',
   };
 
+  notification: boolean = false;
+
   dialogOpen: boolean = false;
 
   eventIn: EventIn = {
@@ -39,9 +41,8 @@ export class AdminEventEditComponent {
     link: '',
     subject: '',
     teacher: '',
+    notification: false,
   };
-
-  'notification': boolean;
 
   constructor(private eventService: EventsService) {}
 
@@ -58,6 +59,7 @@ export class AdminEventEditComponent {
       link: this.eventToEdit.link,
       subject: this.eventToEdit.subject,
       teacher: this.eventToEdit.teacher,
+      notification: this.notification,
     };
 
     if (eventForm.invalid) {

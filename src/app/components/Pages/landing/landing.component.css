@@ -27,15 +27,9 @@
     right: 0;
     top: 0;
     bottom: 0;
-    z-index: 1;
 }
 
 .app-login {
-    position: relative;
-    z-index: 2;
-}
-
-.footer {
     position: relative;
     z-index: 2;
 }
