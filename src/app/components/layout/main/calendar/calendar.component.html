@@ -4,14 +4,14 @@
   </div>
   <div class="events">
     <div class="leftSide" *ngFor="let eventGroup of events">
-        <h3>{{ eventGroup.startDate }}</h3>
+      <h3>{{ eventGroup.startDate }}</h3>
     </div>
     <div class="rightSide" [ngClass]="{'left-border-radius': isBorderRadius}">
       <div>
         <h2>{{ noEventsMessage }}</h2>
       </div>
       <div class="add-event">
-        <app-admin-event-form/>
+        <app-admin-event-form />
       </div>
       <div *ngFor="let eventGroup of events">
         <div *ngFor="let event of eventGroup.events">
@@ -40,6 +40,7 @@
               </div>
               <div class="buttons">
                 <app-admin-edit-event-form [eventToEdit]="event" />
+                <app-telegram-notifications [eventToNotify]="event" />
               </div>
             </div>
           </div>
