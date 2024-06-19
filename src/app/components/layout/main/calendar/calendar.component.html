@@ -1,6 +1,9 @@
 <div class="calendar-events">
   <div class="calendar-container">
-    <full-calendar [options]="calendarOptions"></full-calendar>
+    <full-calendar #fullcalendar
+               [options]="calendarOptions"
+               (dateClick)="handleDateClick($event)">
+</full-calendar>
   </div>
   <div class="events">
     <div class="leftSide" *ngFor="let eventGroup of events">
