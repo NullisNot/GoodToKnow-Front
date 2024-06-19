@@ -47,8 +47,6 @@ export class AdminEventEditComponent {
   constructor(private eventService: EventsService) {}
 
   editEvent(eventForm: NgForm) {
-    console.log('Formulario enviado');
-
     let date = this.eventToEdit.startsAt.toString().split('T')[0];
     this.eventIn = {
       building: this.eventToEdit.building,
@@ -64,7 +62,6 @@ export class AdminEventEditComponent {
 
     if (eventForm.invalid) {
       alert('Todos los campos deben estar rellenos');
-      console.log('Formulario inválido');
       return;
     }
 
@@ -83,7 +80,6 @@ export class AdminEventEditComponent {
     if (confirm('¿Estás seguro de que quieres eliminar este evento?')) {
       this.eventService.deleteEvent(this.eventToEdit.id).subscribe({
         next: () => {
-          alert('Evento eliminado');
           this.closeDialog();
         },
         error: (error) => {

@@ -14,19 +14,22 @@ import { EventStructure } from './eventStructure';
 import { AdminEventEditComponent } from '../admin-edit-event-form/admin-edit-event-form.component';
 import { DatePipe } from '@angular/common';
 import { AdminEventFormComponent } from '../admin-event-form/admin-event-form.component';
+import { TelegramNotificationsComponent } from '../telegram-notifications/telegram-notifications.component';
+import { TelegramService } from '../../../../services/telegram/telegram-service.service';
 
 @Component({
   selector: 'app-calendar',
   standalone: true,
   templateUrl: './calendar.component.html',
   styleUrl: './calendar.component.css',
-  providers: [EventsService, DatePipe],
+  providers: [EventsService, DatePipe, TelegramService],
   imports: [
     FullCalendarModule,
     CommonModule,
     HttpClientModule,
     AdminEventEditComponent,
     AdminEventFormComponent,
+    TelegramNotificationsComponent,
   ],
 })
 export class CalendarComponent implements OnInit {

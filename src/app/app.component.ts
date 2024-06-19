@@ -10,7 +10,7 @@ import { FooterComponent } from './components/layout/footer/footer.component';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
   standalone: true,
-  imports:[CommonModule, NavComponent, FooterComponent, RouterOutlet]
+  imports: [CommonModule, NavComponent, FooterComponent, RouterOutlet],
 })
 export class AppComponent implements OnInit {
   title = 'GoodToKnow';
@@ -21,12 +21,10 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.router.events.pipe(
-      filter(event => event instanceof NavigationEnd)
-    ).subscribe((event: any) => {
-      this.url = event.urlAfterRedirects;
-      console.log('Ruta actual:', this.url);
-    });
+    this.router.events
+      .pipe(filter((event) => event instanceof NavigationEnd))
+      .subscribe((event: any) => {
+        this.url = event.urlAfterRedirects;
+      });
   }
 }
-
