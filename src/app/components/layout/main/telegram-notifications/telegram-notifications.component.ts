@@ -29,13 +29,17 @@ export class TelegramNotificationsComponent {
   constructor(private telegramService: TelegramService) {}
 
   notifyEvent() {
-    const message = this.bulidMessage(this.eventToNotify);
-    this.telegramService.notifyEvent(message).subscribe({
-      next: () => {},
-      error: (error) => {
-        console.error('Error sending notification', error);
-      },
-    });
+    if (confirm('¿Estás seguro de que quieres eliminar este evento?')) {
+      const message = this.bulidMessage(this.eventToNotify);
+      this.telegramService.notifyEvent(message).subscribe({
+        next: () => {
+          alert('Evento notificado');
+        },
+        error: (error) => {
+          console.error('Error sending notification', error);
+        },
+      });
+    }
   }
 
   bulidMessage(eventToNotify: EventStructure): string {

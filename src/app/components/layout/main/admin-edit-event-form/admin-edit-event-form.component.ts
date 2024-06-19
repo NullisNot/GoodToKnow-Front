@@ -80,7 +80,6 @@ export class AdminEventEditComponent {
     if (confirm('¿Estás seguro de que quieres eliminar este evento?')) {
       this.eventService.deleteEvent(this.eventToEdit.id).subscribe({
         next: () => {
-          alert('Evento eliminado');
           this.closeDialog();
         },
         error: (error) => {
