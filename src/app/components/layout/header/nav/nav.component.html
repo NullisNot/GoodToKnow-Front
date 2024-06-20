@@ -8,20 +8,20 @@
       </button>
       <div *ngIf="showOptions" class="dropdown-menu">
         <ng-container>
-          <a routerLink="/admin-create-events">
+          <a routerLink="/admin-create-events" (click)="toggleOptions()">
             Crear eventos <i class="fas fa-calendar-plus"></i>
           </a>
-          <a routerLink="/calendar">
+          <a routerLink="/calendar" (click)="toggleOptions()">
             Calendario <i class="fas fa-calendar-alt"></i>
           </a>
-          <a routerLink="/info">
+          <a routerLink="/info" (click)="toggleOptions()">
             Información <i class="fas fa-info-circle"></i>
           </a>
-          <a routerLink="/notification">
+          <a routerLink="/notification" (click)="toggleOptions()">
             Notificación <i class="fas fa-bell"></i>
           </a>
         </ng-container>
-        <a routerLink="/">
+        <a routerLink="/" (click)="toggleOptions()">
           <i class="fas fa-sign-out-alt"></i> Cerrar sesión 
         </a>
       </div>
