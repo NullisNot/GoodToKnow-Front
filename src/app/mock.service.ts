@@ -18,12 +18,11 @@ export class MockService {
     console.log('Datos enviados de notificación:', data);
   }
 
-  getInformation():Information {
+  getInformation(): Information {
     return info;
   }
 
-  getNotifications():Array<Notification>{
+  getNotifications(): Array<Notification> {
     return notifications;
   }
 }
-
