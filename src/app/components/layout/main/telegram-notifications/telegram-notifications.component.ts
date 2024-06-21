@@ -29,7 +29,11 @@ export class TelegramNotificationsComponent {
   constructor(private telegramService: TelegramService) {}
 
   notifyEvent() {
-    if (confirm('¿Estás seguro de que quieres eliminar este evento?')) {
+    if (
+      confirm(
+        '¿Estás seguro de que quieres enviar un recordatorio de este evento?'
+      )
+    ) {
       const message = this.bulidMessage(this.eventToNotify);
       this.telegramService.notifyEvent(message).subscribe({
         next: () => {
@@ -44,12 +48,12 @@ export class TelegramNotificationsComponent {
 
   bulidMessage(eventToNotify: EventStructure): string {
     let date = this.eventToNotify.startsAt.toString().split('T')[0];
-    const message = `📢 Recordatorio de evento!! 📢\n
+    const message = `🔔 ¡Recordatorio de evento! 🔔\n\n
     📌 Día: ${date}
-    👨‍🏫 Docente: ${eventToNotify.teacher}
     📚 Asignatura: ${eventToNotify.subject}
+    👨‍🏫 Docente: ${eventToNotify.teacher}
     🕓 Horario: ${eventToNotify.start}/${eventToNotify.finish}
-    🏢 Edificio: ${eventToNotify.building}, ${eventToNotify.classroom}
+    🏢 Ubicación: ${eventToNotify.building}, ${eventToNotify.classroom}
     🔗 Enlace: ${eventToNotify.link}
     📝 Comentarios: ${eventToNotify.comments}`;
     return message;
