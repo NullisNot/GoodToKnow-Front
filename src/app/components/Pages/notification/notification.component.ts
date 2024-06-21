@@ -1,15 +1,12 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { NotificationSectionComponent } from '../../layout/main/notification-section/notification-section.component';
-
-
-
+import { NotificationCardComponent } from '../../layout/main/notification-card/notification-card.component';
 
 @Component({
   selector: 'app-notification',
   standalone: true,
-  imports: [NotificationSectionComponent, CommonModule],
   templateUrl: './notification.component.html',
   styleUrl: './notification.component.css',
+  imports: [CommonModule, NotificationCardComponent],
 })
 export class NotificationComponent {}

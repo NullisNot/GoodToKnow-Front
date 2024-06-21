@@ -1,0 +1,8 @@
+<div class="notifications">
+  <div class="title">
+    <p><strong>Últimas notificaciones: </strong></p>
+  </div>
+  <div class="bubble" *ngFor="let notification of notifications">
+    <div [innerHTML]="formatNotification(notification.notification)"></div>
+  </div>
+</div>
