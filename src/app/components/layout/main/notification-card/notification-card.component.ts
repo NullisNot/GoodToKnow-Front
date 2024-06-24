@@ -35,7 +35,7 @@ export class NotificationCardComponent implements OnInit {
           ) {
             latestNotifications.unshift(this.notifications[i]);
           }
-          this.notifications = latestNotifications;
+          this.notifications = latestNotifications.reverse();
         }
       },
       error: (error) => {
