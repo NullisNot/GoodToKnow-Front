@@ -1,10 +1,13 @@
 <div class="calendar-events">
   <div class="calendar-container">
-    <full-calendar [options]="calendarOptions"></full-calendar>
+    <full-calendar #fullcalendar
+               [options]="calendarOptions"
+               (dateClick)="handleDateClick($event)">
+</full-calendar>
   </div>
   <div class="events">
     <div class="leftSide" *ngFor="let eventGroup of events">
-        <h3>{{ eventGroup.startDate }}</h3>
+      <h3>{{ eventGroup.startDate }}</h3>
     </div>
     <div class="rightSide" [ngClass]="{'left-border-radius': isBorderRadius}">
       <div>
@@ -40,6 +43,7 @@
               </div>
               <div class="buttons" *ngIf="sessionService.logIn">
                 <app-admin-edit-event-form [eventToEdit]="event" />
+                <app-telegram-notifications [eventToNotify]="event" />
               </div>
             </div>
           </div>

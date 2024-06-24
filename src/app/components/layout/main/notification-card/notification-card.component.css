@@ -1,0 +1,76 @@
+.notifications {
+  max-width: 550px;
+  min-width: 300px;
+  margin: auto;
+}
+
+.bubble {
+  background: #d3d3d3;
+  position: relative;
+  border-radius: 10px;
+  padding: 20px 80px;
+  width: 80%;
+  margin-bottom: 40px;
+  display: inline-block;
+  max-width: 550px;
+}
+
+.bubble::before {
+  content: "";
+  background-color: #d3d3d3;
+  display: block;
+  position: absolute;
+  left: 80px;
+  width: 60px;
+  height: 60px;
+  border-radius: 100px;
+  bottom: -30px;
+  z-index: -6;
+}
+
+.bubble::after {
+  content: "";
+  background-color: white;
+  display: block;
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  border-radius: 100px;
+  bottom: -35px;
+  left: 95px;
+  z-index: -5;
+}
+
+.image,
+.title-notification {
+  position: relative;
+  float: left;
+}
+
+.image {
+  margin-right: 5px;
+  width: 40px;
+}
+
+.title-notification {
+  margin-bottom: 5px;
+  width: 505px;
+}
+
+.image i {
+  font-size: 25px;
+}
+
+.description {
+  position: relative;
+  float: left;
+}
+
+.title {
+  font-size: 20px;
+}
+
+.text {
+  font-size: 18px;
+  line-height: 150%;
+}
