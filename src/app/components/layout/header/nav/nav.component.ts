@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { SessionService } from '../../../../services/session.service';
 
@@ -10,11 +10,15 @@ import { SessionService } from '../../../../services/session.service';
   templateUrl: './nav.component.html',
   styleUrl: './nav.component.css',
 })
-export class NavComponent {
+export class NavComponent implements OnInit {
   showOptions: boolean = false;
   
 
   constructor(public sessionService: SessionService){
+  }
+
+    ngOnInit(): void {
+    this.sessionService.isLogged();
   }
 
   toggleOptions() {

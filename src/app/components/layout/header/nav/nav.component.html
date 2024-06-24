@@ -21,7 +21,7 @@
             Notificación <i class="fas fa-bell"></i>
           </a>
         </ng-container>
-        <a routerLink="/" *ngIf="sessionService.logIn">
+        <a routerLink="/" *ngIf="sessionService.logIn" (click)="sessionService.logOut()">
           <i class="fas fa-sign-out-alt"></i> Cerrar sesión 
         </a>
       </div>

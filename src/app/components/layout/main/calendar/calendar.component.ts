@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FullCalendarModule } from '@fullcalendar/angular';
 import { CalendarOptions } from '@fullcalendar/core';
 import dayGridPlugin from '@fullcalendar/daygrid';
@@ -11,7 +11,7 @@ import { EventStructure } from './eventStructure';
 import { AdminEventEditComponent } from '../admin-edit-event-form/admin-edit-event-form.component';
 import { DatePipe } from '@angular/common';
 import { AdminEventFormComponent } from '../admin-event-form/admin-event-form.component';
-import { AuthenticationInterceptorTsService } from '../../../../services/authentication.interceptor.ts.service';
+import { SessionService } from '../../../../services/session.service';
 
 @Component({
   selector: 'app-calendar',
@@ -27,7 +27,7 @@ import { AuthenticationInterceptorTsService } from '../../../../services/authent
     AdminEventFormComponent,
   ],
 })
-export class CalendarComponent {
+export class CalendarComponent implements OnInit {
   events: { startDate: string; events: EventStructure[] }[] = [];
   selectedDate: string = new Date().toISOString().split('T')[0];
   noEventsMessage: string = '';
@@ -37,9 +37,14 @@ export class CalendarComponent {
   constructor(
     private eventsService: EventsService,
     private datePipe: DatePipe,
+    public sessionService: SessionService
   ) {
     this.getData({ dateStr: this.selectedDate });
   }
+  ngOnInit(): void {
+    this.sessionService.isLogged();
+  }
+
 
   handleDateClick(arg: any) {
     this.getData(arg);

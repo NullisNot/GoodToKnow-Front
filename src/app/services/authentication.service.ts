@@ -25,6 +25,10 @@ export class AuthenticationService {
     )
   }
 
+  removeToken(): void {
+    localStorage.removeItem('token');
+  }
+
   getToken(): string | null {
     return localStorage.getItem('token');
   }
