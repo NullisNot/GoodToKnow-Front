@@ -24,7 +24,19 @@ export class NotificationCardComponent implements OnInit {
   loadNotifications() {
     this.notificationsService.getNotifications().subscribe({
       next: (data) => {
-        this.notifications = data;
+        this.notifications = [...data, ...this.notifications];
+
+        if (this.notifications.length > 10) {
+          const latestNotifications: Notification[] = [];
+          for (
+            let i = this.notifications.length - 1;
+            i >= 0 && latestNotifications.length < 10;
+            i--
+          ) {
+            latestNotifications.unshift(this.notifications[i]);
+          }
+          this.notifications = latestNotifications.reverse();
+        }
       },
       error: (error) => {
         console.error('Error', error);
