@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { SessionService } from '../../../../services/session.service';
 
 @Component({
   selector: 'app-nav',
@@ -11,6 +12,10 @@ import { RouterModule } from '@angular/router';
 })
 export class NavComponent {
   showOptions: boolean = false;
+  
+
+  constructor(public sessionService: SessionService){
+  }
 
   toggleOptions() {
     this.showOptions = !this.showOptions;

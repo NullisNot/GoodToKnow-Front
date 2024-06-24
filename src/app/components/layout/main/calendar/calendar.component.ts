@@ -11,6 +11,7 @@ import { EventStructure } from './eventStructure';
 import { AdminEventEditComponent } from '../admin-edit-event-form/admin-edit-event-form.component';
 import { DatePipe } from '@angular/common';
 import { AdminEventFormComponent } from '../admin-event-form/admin-event-form.component';
+import { AuthenticationInterceptorTsService } from '../../../../services/authentication.interceptor.ts.service';
 
 @Component({
   selector: 'app-calendar',
@@ -35,7 +36,7 @@ export class CalendarComponent {
 
   constructor(
     private eventsService: EventsService,
-    private datePipe: DatePipe
+    private datePipe: DatePipe,
   ) {
     this.getData({ dateStr: this.selectedDate });
   }

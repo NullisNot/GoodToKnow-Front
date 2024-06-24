@@ -54,8 +54,8 @@ export class LoginComponent {
 
     this.authenticationService.login(credentials).subscribe(
       response =>{
-        localStorage.setItem('token', response.token);
-        console.log('Login successful', response)
+        this.router.navigate(['/calendar']);
+        console.log('Login successful', response);
       },
       error => {
         console.error('Login failed', error);
