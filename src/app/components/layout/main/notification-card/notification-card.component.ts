@@ -24,10 +24,8 @@ export class NotificationCardComponent implements OnInit {
   loadNotifications() {
     this.notificationsService.getNotifications().subscribe({
       next: (data) => {
-        // Añadir nuevas notificaciones al inicio de la lista existente
         this.notifications = [...data, ...this.notifications];
 
-        // Limitar la lista a las 10 notificaciones más recientes usando un bucle invertido
         if (this.notifications.length > 10) {
           const latestNotifications: Notification[] = [];
           for (
