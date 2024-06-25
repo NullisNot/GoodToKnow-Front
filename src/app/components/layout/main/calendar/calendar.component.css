@@ -3,7 +3,7 @@
   padding: 10px;
   border: 1px solid #000000;
   border-radius: 10px;
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   max-height: 90%;
 }
 
@@ -18,19 +18,18 @@
 .EventRight {
   display: flex;
   background-color: #ffffff;
-  border-radius: 20px;
+  border-bottom: solid black 2px;
   width: 420px;
   flex-direction: column;
-  padding: 10px;
-  margin-top: 10px;
-  padding-left: 30px;
+  padding-left: 25px;
   padding-right: 30px;
+  padding-top: 5px;
   height: auto;
-  overflow: hidden; 
+  overflow: hidden;
 }
 
 .events {
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   width: 45%;
   display: flex;
   flex-direction: row;
@@ -56,12 +55,13 @@
   max-height: 100%;
   overflow-y: auto;
   width: 100%;
-  background-color: #d3d3d3;
+  min-width: fit-content;
+  min-height: fit-content;
   border-top-right-radius: 10px;
   border-bottom-right-radius: 10px;
   display: flex;
   justify-content: center;
-  padding-top: 15px;
+  padding-top: 10px;
 }
 
 .left-border-radius {
@@ -83,54 +83,42 @@
 }
 .title {
   font-weight: bold;
+  font-size: 1rem;
   margin-right: 10px;
+  margin: 0px;
 }
 
 .answer {
   font-weight: normal;
-  font-size: 15px;
-  border: solid black 1px;
+  font-size: 1.4rem;
   padding-top: 1px;
   padding-bottom: 1px;
   display: flex;
   align-items: center;
-  justify-content: center;
   width: 100%;
   min-height: 20px;
   height: auto;
-  overflow: hidden; 
+  overflow: hidden;
+  margin: 0;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 
 .EventPart {
   display: flex;
-  flex-direction: row;
-  align-items: center;
+  flex-direction: column;
   justify-content: flex-start;
   padding-bottom: 5px;
 }
 
 .subjectTitle {
   border-bottom: solid #000000 1px;
-  padding-bottom: 2px;
+  padding-bottom: 10px;
   width: 27vw;
 }
 
 .StartDate {
   font-size: 20px;
-}
-
-.answerComments {
-  font-weight: normal;
-  font-size: 15px;
-  border: solid black 1px;
-  padding-top: 1px;
-  padding-bottom: 1px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  min-height: 20px;
-  
 }
 
 .buttons {
