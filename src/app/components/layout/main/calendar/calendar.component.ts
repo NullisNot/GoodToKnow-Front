@@ -57,6 +57,7 @@ export class CalendarComponent implements OnInit {
   }
   ngOnInit(): void {
     this.sessionService.isLogged();
+    this.updateEvents();
   }
 
 
@@ -78,10 +79,6 @@ export class CalendarComponent implements OnInit {
     selectable: true,
     events: [],
   };
-
-  ngOnInit() {
-    this.updateEvents();
-  }
 
   getData(date: string) {
     this.eventsService.getEventByDay(date).subscribe({

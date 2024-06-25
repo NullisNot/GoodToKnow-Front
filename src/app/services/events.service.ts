@@ -30,7 +30,7 @@ export class EventsService {
   }
 
   getEventsByMonth(year: number, month: number): Observable<Event[]> {
-    const url = `${this.apiUrl}/${year}/${month}`;
-    return this.http.get<Event[]>(url);
+    const url = `${this.apiUrl}/${year}/${month}` ;
+    return this.http.get<Event[]>(url, {headers: {skip:'true'}});
   }
 }
