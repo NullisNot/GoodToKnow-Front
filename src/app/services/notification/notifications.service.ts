@@ -13,6 +13,6 @@ export class NotificationsService {
   constructor() {}
 
   getNotifications(): Observable<any> {
-    return this.http.get(this.apiUrl);
+    return this.http.get(this.apiUrl, {headers: {skip:'true'}});
   }
 }
