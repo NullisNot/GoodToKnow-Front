@@ -14,8 +14,10 @@ import { EventStructure } from './eventStructure';
 import { AdminEventEditComponent } from '../admin-edit-event-form/admin-edit-event-form.component';
 import { DatePipe } from '@angular/common';
 import { AdminEventFormComponent } from '../admin-event-form/admin-event-form.component';
+import { SessionService } from '../../../../services/session.service';
 import { TelegramNotificationsComponent } from '../telegram-notifications/telegram-notifications.component';
 import { TelegramService } from '../../../../services/telegram/telegram-service.service';
+
 
 @Component({
   selector: 'app-calendar',
@@ -33,7 +35,9 @@ import { TelegramService } from '../../../../services/telegram/telegram-service.
   ],
 })
 export class CalendarComponent implements OnInit {
+
   @ViewChild('fullcalendar') fullcalendar!: FullCalendarComponent;
+
 
   events: { startDate: string; events: EventStructure[] }[] = [];
   selectedDate: string = new Date().toISOString().split('T')[0];
@@ -45,11 +49,16 @@ export class CalendarComponent implements OnInit {
 
   constructor(
     private eventsService: EventsService,
-    private datePipe: DatePipe
+    private datePipe: DatePipe,
+    public sessionService: SessionService
   ) {
     this.currentYear = new Date().getFullYear();
     this.currentMonth = new Date().getMonth() + 1;
   }
+  ngOnInit(): void {
+    this.sessionService.isLogged();
+  }
+
 
   handleDateClick(arg: any) {
     this.selectedDate = arg.dateStr;

@@ -47,6 +47,7 @@ export class AdminEventEditComponent {
   constructor(private eventService: EventsService) {}
 
   editEvent(eventForm: NgForm) {
+
     let date = this.eventToEdit.startsAt.toString().split('T')[0];
     this.eventIn = {
       building: this.eventToEdit.building,

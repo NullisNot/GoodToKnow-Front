@@ -3,6 +3,8 @@ import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { Router } from '@angular/router';
+import { AuthenticationService } from '../../../../services/authentication.service';
+import { UserCredentials } from '../../../../services/types';
 
 @Component({
   selector: 'app-login',
@@ -24,7 +26,7 @@ export class LoginComponent {
     password: '',
   };
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private authenticationService: AuthenticationService) {}
 
   toggle(type: string) {
     if (type === 'user') {
@@ -45,13 +47,20 @@ export class LoginComponent {
   }
 
   adminLogin() {
-    if (
-      this.admin.adminname === 'Administrador' &&
-      this.admin.password === 'Passwordtry'
-    ) {
-      this.router.navigate(['/calendar']);
-    } else {
-      alert('Nombre o contraseña incorrectos');
-    }
+    const credentials: UserCredentials = {
+      username: this.admin.adminname, 
+      password: this.admin.password
+    };
+
+    this.authenticationService.login(credentials).subscribe(
+      response =>{
+        this.router.navigate(['/calendar']);
+      },
+      error => {
+
+        
+      }
+      
+    )
   }
 }

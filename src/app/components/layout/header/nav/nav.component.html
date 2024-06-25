@@ -8,7 +8,9 @@
       </button>
       <div *ngIf="showOptions" class="dropdown-menu">
         <ng-container>
-          <a routerLink="/admin-create-events" (click)="toggleOptions()">
+
+          <a routerLink="/admin-create-events" (click)="toggleOptions()" *ngIf="sessionService.logIn">
+
             Crear eventos <i class="fas fa-calendar-plus"></i>
           </a>
           <a routerLink="/calendar" (click)="toggleOptions()">
@@ -21,7 +23,9 @@
             Notificación <i class="fas fa-bell"></i>
           </a>
         </ng-container>
-        <a routerLink="/" (click)="toggleOptions()">
+
+        <a routerLink="/" *ngIf="sessionService.logIn" (click)="sessionService.logOut()">
+
           <i class="fas fa-sign-out-alt"></i> Cerrar sesión 
         </a>
       </div>

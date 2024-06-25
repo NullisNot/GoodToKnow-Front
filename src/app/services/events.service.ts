@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
-import { Observable } from 'rxjs';
-import { EventIn } from './types';
+import { Observable, skip } from 'rxjs';
+import { Event, EventIn } from './types';
 
 @Injectable({
   providedIn: 'root',
@@ -14,7 +14,7 @@ export class EventsService {
   constructor() {}
 
   getEventByDay(day: string): Observable<any> {
-    return this.http.get(`${this.apiUrl}?day=${day}`);
+    return this.http.get(`${this.apiUrl}?day=${day}`, {headers: {skip:'true'}});
   }
 
   createEvent(eventIn: EventIn): Observable<any> {

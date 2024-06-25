@@ -21,3 +21,8 @@ export interface EventIn {
   teacher: string;
   notification: boolean;
 }
+
+export interface UserCredentials {
+  username: string;
+  password: string;
+}
