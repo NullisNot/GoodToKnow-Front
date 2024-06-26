@@ -66,6 +66,14 @@ export class CalendarComponent implements OnInit {
     this.getData(this.selectedDate);
   }
 
+  handleEventCreated(){
+    this.updateEvents();
+  }
+
+  handleEventDeleted(){
+    this.updateEvents();
+  }
+
   calendarOptions: CalendarOptions = {
     initialView: 'dayGridMonth',
     eventTimeFormat: {
