@@ -1,9 +1,7 @@
 <div class="calendar-events">
   <div class="calendar-container">
-    <full-calendar #fullcalendar
-               [options]="calendarOptions"
-               (dateClick)="handleDateClick($event)">
-</full-calendar>
+    <full-calendar #fullcalendar [options]="calendarOptions" (dateClick)="handleDateClick($event)">
+    </full-calendar>
   </div>
   <div class="events">
     <div class="leftSide" *ngFor="let eventGroup of events">
@@ -13,8 +11,8 @@
       <div>
         <h2>{{ noEventsMessage }}</h2>
       </div>
-      <div class="add-event" *ngIf="sessionService.logIn" >
-        <app-admin-event-form/>
+      <div class="add-event" *ngIf="sessionService.logIn">
+        <app-admin-event-form />
       </div>
       <div *ngFor="let eventGroup of events">
         <div *ngFor="let event of eventGroup.events">
@@ -35,7 +33,7 @@
               </div>
               <div class="EventPart">
                 <h3 class="title">Comentarios:</h3>
-                <h3 class="answerComments">{{ event.comments }}</h3>
+                <h3 class="answer">{{ event.comments }}</h3>
               </div>
               <div class="EventPart">
                 <h3 class="title">Enlaces:</h3>
