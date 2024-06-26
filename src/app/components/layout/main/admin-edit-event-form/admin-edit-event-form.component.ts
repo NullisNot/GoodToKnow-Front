@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
 import { EventIn } from '../../../../services/types';
 import { EventsService } from '../../../../services/events.service';
@@ -27,6 +27,7 @@ export class AdminEventEditComponent {
     start: '',
     finish: '',
   };
+  @Output() eventDeleted = new EventEmitter<void>();
 
   notification: boolean = false;
 
@@ -82,6 +83,7 @@ export class AdminEventEditComponent {
       this.eventService.deleteEvent(this.eventToEdit.id).subscribe({
         next: () => {
           this.closeDialog();
+          this.eventDeleted.emit();
         },
         error: (error) => {
           console.error('Error deleting event', error);

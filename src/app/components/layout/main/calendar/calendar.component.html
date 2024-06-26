@@ -12,7 +12,7 @@
         <h2>{{ noEventsMessage }}</h2>
       </div>
       <div class="add-event" *ngIf="sessionService.logIn">
-        <app-admin-event-form />
+        <app-admin-event-form (eventCreated)="handleEventCreated()"/>
       </div>
       <div *ngFor="let eventGroup of events">
         <div *ngFor="let event of eventGroup.events">
@@ -40,7 +40,7 @@
                 <h3 class="answer">{{ event.link }}</h3>
               </div>
               <div class="buttons" *ngIf="sessionService.logIn">
-                <app-admin-edit-event-form [eventToEdit]="event" />
+                <app-admin-edit-event-form [eventToEdit]="event" (eventDeleted) = "handleEventDeleted()" />
                 <app-telegram-notifications [eventToNotify]="event" />
               </div>
             </div>

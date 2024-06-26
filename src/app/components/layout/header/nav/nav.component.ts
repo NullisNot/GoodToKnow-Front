@@ -13,11 +13,10 @@ import { SessionService } from '../../../../services/session.service';
 export class NavComponent implements OnInit {
   showOptions: boolean = false;
   
-
   constructor(public sessionService: SessionService){
   }
 
-    ngOnInit(): void {
+  ngOnInit(): void {
     this.sessionService.isLogged();
   }
 

@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, EventEmitter, output, Output } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { Event, EventIn } from '../../../../services/types';
@@ -14,6 +14,8 @@ import { EventsService } from '../../../../services/events.service';
 })
 export class AdminEventFormComponent {
   dialogOpen: boolean = false;
+
+  @Output() eventCreated = new EventEmitter<void>();
 
   event: Event = {
     building: '',
@@ -68,6 +70,7 @@ export class AdminEventFormComponent {
         alert('Evento Creado');
         eventForm.resetForm();
         this.closeDialog();
+        this.eventCreated.emit();
       },
       error: (error) => {
         console.error('Error creating event', error);
