@@ -5,6 +5,7 @@ import { RouterModule } from '@angular/router';
 import { Router } from '@angular/router';
 import { AuthenticationService } from '../../../../services/authentication.service';
 import { UserCredentials } from '../../../../services/types';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-login',
@@ -56,9 +57,8 @@ export class LoginComponent {
       response =>{
         this.router.navigate(['/calendar']);
       },
-      error => {
-
-        
+      (error: HttpErrorResponse) => {
+        alert('Nombre de administrador o contraseña incorrectos')
       }
       
     )
