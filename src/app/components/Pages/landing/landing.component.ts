@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { LoginComponent } from '../../layout/main/login/login.component';
 import { NavComponent } from '../../layout/header/nav/nav.component';
 import { AuthenticationService } from '../../../services/authentication.service';
@@ -13,4 +13,8 @@ import { CommonModule } from '@angular/common';
   imports: [LoginComponent, NavComponent, HttpClientModule, CommonModule],
   providers:[AuthenticationService]
 })
-export class LandingComponent {}
+export class LandingComponent implements OnInit{
+  ngOnInit(): void {
+    localStorage.clear();
+  }
+}
