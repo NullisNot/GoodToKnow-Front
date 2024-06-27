@@ -12,19 +12,3 @@
     width: 500px;
     margin: auto;
 }
-
-@media (max-width: 768px) {
-
-    .data {
-        width: 90vw;
-    }
-
-}
-
-@media (max-width: 480px) {
-
-    .data {
-        width: 90vw;
-    }
-  
-}
