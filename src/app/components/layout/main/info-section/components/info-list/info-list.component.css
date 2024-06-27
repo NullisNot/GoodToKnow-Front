@@ -22,7 +22,11 @@
 @media (max-width: 768px) {
 
     .data {
-        width: 65%;
+        width: 100vw;
+    }
+
+    .info-list {
+        width: 95vw;
     }
 
 }
@@ -30,7 +34,11 @@
 @media (max-width: 480px) {
 
     .data {
-        width: 65%;
+        width: 100vw;
+    }
+
+    .info-list {
+        width: 95vw;
     }
   
 }
