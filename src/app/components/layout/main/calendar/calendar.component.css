@@ -35,8 +35,7 @@
   flex-direction: row;
   border: 1px solid #000000;
   border-radius: 10px;
-  min-height: 85vh;
-  max-height: 85vh;
+  height: auto;
 }
 
 .leftSide {
@@ -81,6 +80,7 @@
 .rightSide::-webkit-scrollbar-thumb:hover {
   background-color: #555;
 }
+
 .title {
   font-weight: bold;
   font-size: 1rem;
@@ -129,4 +129,107 @@
 .add-event {
   position: absolute;
   right: 5vw;
+}
+
+@media (max-width: 768px) {
+
+  .fc {
+    height: 51vh;
+  }
+
+  .events {
+    display: flex;
+    flex-direction: column;
+    width: 90vw;
+    margin-top: 10vh;
+    height: 50vh;
+  }
+
+
+  .calendar-container {
+    width: 90%;
+    height: 50vh;
+  }
+
+  .calendar-events {
+    flex-direction: column;
+    align-items: center;
+    max-height: none;
+  }
+
+  .EventRight {
+    width: 100%;
+    padding-left: 10px;
+    padding-right: 10px;
+    max-height: none;
+    width: 75vw;
+  }
+
+  .leftSide {
+    font-size: 20px;
+    border-bottom: solid black 1px;
+    border-right: none;
+  }
+
+  .subjectTitle {
+    width: 80vw;
+  }
+
+  .add-event {
+    right: 10vw;
+    bottom: 27vh;
+  }
+}
+
+@media (max-width: 480px) {
+  .fc {
+    height: 51vh;
+  }
+
+  .events {
+    display: flex;
+    flex-direction: column;
+    width: 90vw;
+    margin-top: 10vh;
+    height: auto;
+    overflow: visible;
+  }
+
+  .leftSide {
+    font-size: 18px;
+    padding: 2px;
+    border-bottom: solid black 1px;
+    border-right: none;
+  }
+
+  .answer {
+    font-size: 1rem;
+  }
+
+  .EventRight {
+    padding-left: 5px;
+    padding-right: 5px;
+    width: 75vw;
+  }
+
+  .calendar-container {
+    width: 100%;
+    height: auto;
+    overflow: visible;
+  }
+
+  .calendar-events {
+    max-height: none;
+    height: auto;
+    overflow: visible;
+  }
+
+  .subjectTitle {
+    width: 90vw;
+  }
+
+  .add-event {
+    right: 10vw;
+    bottom: 27vh;
+  }
 }
