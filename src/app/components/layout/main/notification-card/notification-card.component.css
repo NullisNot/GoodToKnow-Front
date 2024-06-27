@@ -83,6 +83,12 @@
     padding: 20px 30px;
   }
 
+  .total-bubble {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 }
 
 @media (max-width: 480px) {
@@ -90,5 +96,11 @@
   .bubble {
     padding: 20px 30px;
   }
+
+  .total-bubble {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 
 }

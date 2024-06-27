@@ -91,3 +91,19 @@ input[type="password"]{
 .toggle-right {
     transform: translateX(-50%);
 }
+
+@media (max-width: 768px) {
+
+    .login-container {
+        width: 100%;
+    }
+  }
+  
+  @media (max-width: 480px) {
+
+    .login-container {
+        width: 100%;
+    }
+
+  }
+  
