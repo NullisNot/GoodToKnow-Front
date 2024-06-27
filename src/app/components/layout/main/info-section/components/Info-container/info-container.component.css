@@ -8,6 +8,21 @@
     width: 100%;
 }
 
+@media (max-width: 768px) {
+
+    .data {
+        width: 70%;
+    }
+
+  }
+  
+  @media (max-width: 480px) {
+
+    .data {
+        width: 70%;
+    }
+    
+  }
   
   
 

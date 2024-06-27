@@ -19,8 +19,21 @@
     margin-right: 20px;
 }
 
+@media (max-width: 768px) {
 
+    .data {
+        width: 65%;
+    }
 
+}
+
+@media (max-width: 480px) {
+
+    .data {
+        width: 65%;
+    }
+  
+}
 
 
 
