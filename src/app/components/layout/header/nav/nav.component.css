@@ -2,7 +2,7 @@
     position: fixed;
     top: 0;
     left: 0;
-    width: 100%;
+    width: 100vw;
     background-color: #000000;
     color: white;
     padding: 0px 50px;
@@ -83,3 +83,19 @@ a {
     justify-content: space-between;
     align-items: center;
 }
+
+@media (max-width: 768px) {
+
+    .NavTotal {
+        padding: 0px 30px
+    }
+  
+  }
+  
+  @media (max-width: 480px) {
+  
+    .NavTotal {
+        padding: 0px 30px
+    }
+  
+  }

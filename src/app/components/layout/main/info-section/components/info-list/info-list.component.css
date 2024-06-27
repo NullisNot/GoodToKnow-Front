@@ -19,8 +19,29 @@
     margin-right: 20px;
 }
 
+@media (max-width: 768px) {
 
+    .data {
+        width: 100vw;
+    }
 
+    .info-list {
+        width: 95vw;
+    }
+
+}
+
+@media (max-width: 480px) {
+
+    .data {
+        width: 100vw;
+    }
+
+    .info-list {
+        width: 95vw;
+    }
+  
+}
 
 
 
