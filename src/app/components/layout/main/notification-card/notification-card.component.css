@@ -74,3 +74,21 @@
   font-size: 18px;
   line-height: 150%;
 }
+
+
+
+@media (max-width: 768px) {
+
+  .bubble {
+    padding: 20px 30px;
+  }
+
+}
+
+@media (max-width: 480px) {
+
+  .bubble {
+    padding: 20px 30px;
+  }
+
+}
