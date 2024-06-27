@@ -20,11 +20,11 @@
             Información <i class="fas fa-info-circle"></i>
           </a>
           <a routerLink="/notification" (click)="toggleOptions()">
-            Notificación <i class="fas fa-bell"></i>
+            Notificaciones <i class="fas fa-bell"></i>
           </a>
         </ng-container>
 
-        <a routerLink="/" *ngIf="sessionService.logIn" (click)="sessionService.logOut()">
+        <a routerLink="/" (click)="sessionService.logOut()">
 
           <i class="fas fa-sign-out-alt"></i> Cerrar sesión 
         </a>
