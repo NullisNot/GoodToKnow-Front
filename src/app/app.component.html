@@ -2,6 +2,10 @@
     <app-nav *ngIf="url!=='/'"/>
     <div class="pages">
         <router-outlet/>
+
+  @if(modal){
+    <app-information />
+}
     </div>
-    <notnull-footer />
+<notnull-footer />
 </div>

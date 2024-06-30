@@ -3,7 +3,7 @@
       <h1 class="logo">goodtoknøw</h1>
     </div>
     <nav class="dropdown-button">
-      <button (click)="toggleOptions()">
+      <button class="modal-open-buttom" (click)="toggleOptions()">
         <i class="fas fa-bars"></i>
       </button>
       <div *ngIf="showOptions" class="dropdown-menu">
@@ -16,7 +16,7 @@
           <a routerLink="/calendar" (click)="toggleOptions()">
             Calendario <i class="fas fa-calendar-alt"></i>
           </a>
-          <a routerLink="/info" (click)="toggleOptions()">
+          <a class="modal-open-buttom" (click)="openInformationmodal()">
             Información <i class="fas fa-info-circle"></i>
           </a>
           <a routerLink="/notification" (click)="toggleOptions()">

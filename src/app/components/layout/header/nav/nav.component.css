@@ -84,6 +84,10 @@ a {
     align-items: center;
 }
 
+.modal-open-buttom {
+    cursor: pointer;
+}
+
 @media (max-width: 768px) {
 
     .NavTotal {

@@ -1,7 +1,8 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { SessionService } from '../../../../services/session.service';
+import { ModalService } from '../../../../services/modal.service';
 
 @Component({
   selector: 'app-nav',
@@ -13,7 +14,7 @@ import { SessionService } from '../../../../services/session.service';
 export class NavComponent implements OnInit {
   showOptions: boolean = false;
   
-  constructor(public sessionService: SessionService){
+  constructor(public sessionService: SessionService, private modalService: ModalService){
   }
 
   ngOnInit(): void {
@@ -22,5 +23,9 @@ export class NavComponent implements OnInit {
 
   toggleOptions() {
     this.showOptions = !this.showOptions;
+  }
+
+  openInformationmodal() {
+    this.modalService.openModal()
   }
 }
