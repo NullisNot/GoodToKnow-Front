@@ -68,7 +68,6 @@ export class AdminEventFormComponent {
     this.eventService.createEvent(this.eventIn).subscribe({
       next: (data) => {
         alert('Evento Creado');
-        eventForm.resetForm();
         this.closeDialog();
         this.eventCreated.emit();
       },
@@ -77,6 +76,7 @@ export class AdminEventFormComponent {
       },
     });
     this.closeDialog();
+    eventForm.resetForm();
   }
 
   openDialog() {
