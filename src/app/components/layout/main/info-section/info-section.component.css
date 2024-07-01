@@ -6,9 +6,11 @@
     flex-direction: column;
     max-height: 80%;
     min-height: 80%;
+    
 }
 
 .information div{
     width: 500px;
     margin: auto;
+    
 }
