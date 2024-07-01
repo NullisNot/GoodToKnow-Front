@@ -101,5 +101,7 @@ a {
   }
 
 .NavTotal a:hover{
-    background-color: gray;
+    background-color: #000000;
+    opacity: 0.5;
+    
 }
